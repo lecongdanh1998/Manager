@@ -29,6 +29,7 @@
                 android:layout_centerHorizontal="true">
 
                 <TextView
+                    android:layout_centerHorizontal="true"
                     android:id="@+id/txt_your_site_signIn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -38,6 +39,7 @@
                     android:textSize="@dimen/text_size_your_site_signIn" />
 
                 <TextView
+                    android:layout_centerHorizontal="true"
                     android:id="@+id/txt_select_signIn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
