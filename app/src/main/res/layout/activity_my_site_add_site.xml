@@ -1,10 +1,134 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".View.MySiteAddSiteActivity"
     tools:ignore="MissingDefaultResource">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-</android.support.constraint.ConstraintLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/img_logo_AddMySite"
+                android:layout_width="@dimen/logo_size_signIn"
+                android:layout_height="@dimen/logo_size_signIn"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/logo_nks" />
+
+            <RelativeLayout
+                android:id="@+id/layout_your_site"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/img_logo_AddMySite"
+                android:layout_centerHorizontal="true">
+
+                <TextView
+                    android:id="@+id/txt_your_site_AddMySite"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="@string/your_site_signIn"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/text_size_your_site_signIn" />
+
+                <TextView
+                    android:id="@+id/txt_select_AddMySite"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txt_your_site_AddMySite"
+                    android:fontFamily="@font/roboto_light"
+                    android:text="@string/select_site_signIn"
+                    android:textColor="@color/colorGray"
+                    android:textSize="@dimen/textMedium" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_form_singIn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/layout_your_site"
+                android:layout_marginLeft="@dimen/marginTop_font_signIn"
+                android:layout_marginTop="@dimen/marginTop_font_signIn"
+                android:layout_marginRight="@dimen/marginTop_font_signIn"
+                android:orientation="vertical"
+                android:weightSum="4">
+
+                <TextView
+                    android:id="@+id/txt_username_signIn"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/roboto_light"
+                    android:text="@string/Str_extSiteCreateMySite"
+                    android:textColor="@color/colorGray"
+                    android:textSize="@dimen/textMedium" />
+
+                <EditText
+                    android:id="@+id/edt_Site_AddMySite"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"
+                    android:cursorVisible="true"
+                    android:fontFamily="@font/roboto_medium"
+                    android:hint="NKS"
+                    android:inputType="textEmailAddress"
+                    android:paddingTop="@dimen/padding_edt_form_signIn"
+                    android:paddingBottom="@dimen/padding_edt_form_signIn"
+                    android:textColor="@color/colorBlack"
+                    android:textColorHint="@color/colorGray"
+                    android:textCursorDrawable="@color/colorPrimary"
+                    android:textSize="@dimen/textMedium" />
+
+                <TextView
+                    android:id="@+id/txt_URL_AddMySite"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/padding_edt_form_signIn"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/roboto_thin"
+                    android:text="@string/Str_extURLCreateMySite"
+                    android:textColor="@color/colorGray"
+                    android:textSize="@dimen/textMedium" />
+
+                <EditText
+                    android:id="@+id/edt_URL_AddMySite"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"
+                    android:cursorVisible="true"
+                    android:fontFamily="@font/roboto_medium"
+                    android:hint="nks@gmail.com"
+                    android:inputType="textPassword"
+                    android:paddingTop="@dimen/padding_edt_form_signIn"
+                    android:paddingBottom="@dimen/padding_edt_form_signIn"
+                    android:textColor="@color/colorBlack"
+                    android:textColorHint="@color/colorGray"
+                    android:textCursorDrawable="@color/colorPrimary"
+                    android:textSize="@dimen/textMedium" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_create_AddMySite"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/layout_form_singIn"
+                android:layout_marginLeft="@dimen/margin_form_signIn"
+                android:layout_marginTop="@dimen/marginTop_font_signIn"
+                android:layout_marginRight="@dimen/margin_form_signIn"
+                android:background="@drawable/custom_button"
+                android:fontFamily="@font/roboto_medium"
+                android:text="@string/Str_btnCreateMySite"
+                android:textAllCaps="false"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/textMedium" />
+        </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>

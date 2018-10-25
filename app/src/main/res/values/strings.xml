@@ -13,10 +13,16 @@
     <string name="continue_signIn">Continue</string>
     <string name="slogan_signIn">Power By NKS</string>
     <string name="setting">Settings</string>
+    <string name="Str_btnCreateMySite">Create</string>
+    <string name="Str_extSiteCreateMySite">Site</string>
+    <string name="Str_extURLCreateMySite">URL</string>
     <string name="logout">Log Out</string>
     <string name="warning">Cảnh báo</string>
     <string name="warning_mess">Vui lòng kiểm tra kết nối internet</string>
     <string name="oke">OKE</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name = "btnDraff">Draff</string>
+    <string name = "btnPending">Pending</string>
+    <string name = "btnPublic">Public</string>
 </resources>

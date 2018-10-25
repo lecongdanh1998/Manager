@@ -7,6 +7,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.provider.Settings;
@@ -22,6 +23,29 @@ import vn.edu.poly.manager.Networking.NetworkStateMonitor;
 import vn.edu.poly.manager.R;
 
 public abstract class BaseActivity extends AppCompatActivity{
+    public static String url = "http://demo.vnlead.webstarterz.com/api/posts";
+    public static String token = "";
+    public static String id = "";
+    public static String author_id = "";
+    public static String category_id = "";
+    public static String title = "";
+    public static String seo_title = "";
+    public static String excerpt = "";
+    public static String body = "";
+    public static String image = "";
+    public static String slug = "";
+    public static String meta_description = "";
+    public static String meta_keywords = "";
+    public static String status = "";
+    public static String featured = "";
+    public static String created_at = "";
+    public static String updated_at = "";
+    public static String name = "";
+    public static String avatar = "";
+    public static String LinkIMAGE = "http://demo.vnlead.webstarterz.com/storage/";
+    public static SharedPreferences dataLogin;
+    public static SharedPreferences.Editor editor;
+    private final int MY_PERMISSIONS_REQUEST_INTERNET = 10;
 
     BroadcastReceiver broadcastReceiver;
 
@@ -29,6 +53,7 @@ public abstract class BaseActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         checkInternetPermission(this);
+        dataLogin  = getSharedPreferences("data_login", MODE_PRIVATE);
         final Dialog dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.custom_dialog_connect_internet);
@@ -56,7 +81,6 @@ public abstract class BaseActivity extends AppCompatActivity{
         };
     }
 
-    private final int MY_PERMISSIONS_REQUEST_INTERNET = 10;
 
     public void checkInternetPermission(Activity thisActivity) {
 

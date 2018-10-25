@@ -46,12 +46,13 @@ public class SignIn extends BaseActivity implements View.OnClickListener {
     private Button btn_signin;
     private EditText edt_password_signIn, edt_user_signIn;
     private String useremail;
+    private TextView txt_your_site_signIn,txt_select_signIn;
     private String userpassword;
-    SharedPreferences dataLogin;
-    SharedPreferences.Editor editor;
     private ProgressDialog progressDialog;
     private RelativeLayout layout_your_site;
     BroadcastReceiver broadcastReceiver;
+    String Site = "";
+    String Url = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,6 +84,8 @@ public class SignIn extends BaseActivity implements View.OnClickListener {
 
     private void initView() {
         checkInternetPermission(this);
+        txt_your_site_signIn = findViewById(R.id.txt_your_site_signIn);
+        txt_select_signIn = findViewById(R.id.txt_select_signIn);
         btn_signin = findViewById(R.id.btn_signIn);
         edt_user_signIn = findViewById(R.id.edt_user_signIn);
         edt_password_signIn = findViewById(R.id.edt_password_signIn);
@@ -96,8 +99,11 @@ public class SignIn extends BaseActivity implements View.OnClickListener {
     }
 
     private void initData(){
-        dataLogin = getSharedPreferences("data_login", MODE_PRIVATE);
         editor = dataLogin.edit();
+        Site = dataLogin.getString("SITESignIn","Your site");
+        Url = dataLogin.getString("URLSignIn","Select to cotinue");
+        txt_your_site_signIn.setText(Site);
+        txt_select_signIn.setText(Url);
     }
 
     private void initEventButton() {
@@ -113,6 +119,7 @@ public class SignIn extends BaseActivity implements View.OnClickListener {
                 SingIn();
                 break;
             case R.id.layout_your_site:
+                intentView(MySiteActivity.class);
                 //add website url
                 break;
             case R.id.btn_connect_internet:

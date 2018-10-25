@@ -4,20 +4,25 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
 import java.util.ArrayList;
 
 import vn.edu.poly.manager.Adapter.MySiteAdapter;
+import vn.edu.poly.manager.Component.BaseActivity;
 import vn.edu.poly.manager.Model.MySiteContructor;
 import vn.edu.poly.manager.R;
 
-public class MySiteActivity extends AppCompatActivity implements View.OnClickListener {
+public class MySiteActivity extends BaseActivity implements View.OnClickListener {
     ArrayList<MySiteContructor> arrayList;
     MySiteAdapter adapter;
     ListView lst_Mysite;
     Button btn_addSite;
+
+    String Site = "";
+    String Url = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,12 +37,34 @@ public class MySiteActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     private void initData() {
+        Site = dataLogin.getString("SITE","");
+        Url = dataLogin.getString("URL","");
         arrayList = new ArrayList<>();
+        if(Site != ""&& Url != ""){
+            arrayList.add(new MySiteContructor(Site,Url));
+        }
         arrayList.add(new MySiteContructor("NKS","nks.com.vn"));
         arrayList.add(new MySiteContructor("Tìm Zì Ta","timzita.com"));
         adapter = new MySiteAdapter(this,arrayList);
         lst_Mysite.setAdapter(adapter);
         adapter.notifyDataSetChanged();
+
+        lst_Mysite.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                editor = dataLogin.edit();
+                editor.putString("SITESignIn",arrayList.get(position).getTitleSite());
+                editor.putString("URLSignIn",arrayList.get(position).getLinkeSite());
+                editor.commit();
+                intentView(SignIn.class);
+            }
+        });
+    }
+
+    private void intentView(Class c) {
+        Intent intent = new Intent(MySiteActivity.this, c);
+        startActivity(intent);
+        finish();
     }
 
     private void initControl() {
@@ -58,7 +85,6 @@ public class MySiteActivity extends AppCompatActivity implements View.OnClickLis
 
     @Override
     public void onBackPressed() {
-        onBackPressed();
         super.onBackPressed();
     }
 }
