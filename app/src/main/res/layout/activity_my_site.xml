@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_BackgroundWhite"
+
+    tools:context=".View.MySiteActivity">
+    <include
+        android:id="@+id/toobar_Mysite"
+        layout="@layout/toobar_mysite"
+
+        />
+    <RelativeLayout
+        android:layout_below="@id/toobar_Mysite"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <EditText
+        android:id="@+id/ext_find_MySite"
+        android:lines="1"
+        android:textCursorDrawable="@null"
+        android:hint="@string/Str_extHintFindMySite"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:textColor="@color/color_extHintGray"
+        android:textColorHint="@color/color_extHintGray"
+        android:textSize="@dimen/dimens_textsize"
+        android:inputType="text"
+        android:drawableStart="@drawable/ic_search_black_exthint"
+        android:paddingLeft="@dimen/dimens_paddingEditText"
+        android:paddingRight="10dp"
+        android:drawableLeft="@drawable/ic_search_black_exthint"
+        android:background="@drawable/ext_custombackground"
+        android:layout_margin="@dimen/dimens_margin"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimens_heightEditText" />
+        <ListView
+            android:layout_above="@id/btn_addSite_MySite"
+            android:id="@+id/lst_Site_MySite"
+            android:layout_below="@id/ext_find_MySite"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></ListView>
+        <Button
+            android:textColor="@color/color_txtWhite"
+            android:textSize="@dimen/dimens_textsize"
+            android:textAllCaps="false"
+            android:text="@string/Str_btnAddMySite"
+            android:id="@+id/btn_addSite_MySite"
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:background="@color/color_btnAdd"
+            android:layout_height="@dimen/dimens_heigth_btnAdd" />
+    </RelativeLayout>
+</RelativeLayout>

@@ -1,3 +1,22 @@
 <resources>
-    <string name="app_name">Manager</string>
+    <string name="app_name">ManagermentApp</string>
+    <string name="Str_txtMySite">MY SITE</string>
+    <string name="Str_txtNewSite">New Site</string>
+    <string name="Str_extHintFindMySite">Search Sites</string>
+    <string name="Str_btnAddMySite">New Site</string>
+    <string name="your_site_signIn">Your site</string>
+    <string name="select_site_signIn">Select to continue</string>
+    <string name="username">Username</string>
+    <string name="placeholder_username">Enter your username</string>
+    <string name="password">Password</string>
+    <string name="placeholder_password">Enter your password</string>
+    <string name="continue_signIn">Continue</string>
+    <string name="slogan_signIn">Power By NKS</string>
+    <string name="setting">Settings</string>
+    <string name="logout">Log Out</string>
+    <string name="warning">Cảnh báo</string>
+    <string name="warning_mess">Vui lòng kiểm tra kết nối internet</string>
+    <string name="oke">OKE</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

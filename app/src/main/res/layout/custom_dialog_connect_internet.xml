@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/dimens_margin"
+        android:layout_marginRight="@dimen/margin_dialog">
+
+        <RelativeLayout
+            android:padding="@dimen/dimens_padding"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:id="@+id/layout_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/img_warning_custom_dialog"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_warning" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/img_warning_custom_dialog"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="@string/warning"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/textLager" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/txt_mess_custom_dialog"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/layout_title"
+                android:layout_marginTop="@dimen/margin_dialog"
+                android:fontFamily="@font/roboto_medium"
+                android:text="@string/warning_mess"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/textMedium" />
+
+            <Button
+                android:fontFamily="@font/roboto_medium"
+                android:id="@+id/btn_connect_internet"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txt_mess_custom_dialog"
+                android:layout_alignParentRight="true"
+                android:background="@android:color/transparent"
+                android:text="@string/oke"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/textSize_button_dialog" />
+        </RelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>

@@ -4,15 +4,169 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".View.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+        <!-- Layout to contain contents of main body of screen (drawer will slide over this) -->
+        <android.support.design.widget.AppBarLayout
+            android:id="@+id/content_linear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include layout="@layout/toobar_mysite" />
+
+            <FrameLayout
+                android:id="@+id/content_frame"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/colorWhite"></FrameLayout>
+        </android.support.design.widget.AppBarLayout>
+
+        <!-- Container for contents of drawer - use NavigationView to make configuration easier -->
+        <android.support.design.widget.NavigationView
+            android:id="@+id/nav_view"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:fitsSystemWindows="false">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fitsSystemWindows="false">
+
+                <RelativeLayout
+                    android:id="@+id/layout_header_navigation_main"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true">
+
+                    <ImageView
+                        android:id="@+id/btn_cancel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginTop="@dimen/margin_5dp"
+                        android:src="@drawable/ic_cancel_black_24dp" />
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/avatar_user_header_navigation_main"
+                        android:layout_width="@dimen/avatar_size"
+                        android:layout_height="@dimen/avatar_size"
+                        android:layout_centerHorizontal="true"
+                        android:layout_margin="@dimen/margin_header_navigation_main"
+                        android:src="@drawable/logo_nks" />
+
+                    <TextView
+                        android:id="@+id/txt_name_header_navigation_main"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/avatar_user_header_navigation_main"
+                        android:layout_centerHorizontal="true"
+                        android:layout_margin="@dimen/margin_header_navigation_main"
+                        android:fontFamily="@font/roboto_medium"
+                        android:text="@string/username"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="@dimen/textLager" />
+
+                    <TextView
+                        android:id="@+id/txt_role_header_navigation_main"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/txt_name_header_navigation_main"
+                        android:layout_centerHorizontal="true"
+                        android:layout_margin="@dimen/margin_header_navigation_main"
+                        android:fontFamily="@font/roboto_regular"
+                        android:text="@string/username"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="@dimen/textMedium" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_below="@id/txt_role_header_navigation_main"
+                        android:layout_marginTop="5dp"
+                        android:background="@color/colorPrimary" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/layout_list_item"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_above="@id/layout_setting"
+                    android:layout_below="@id/layout_header_navigation_main">
+
+                    <ListView
+                        android:id="@+id/listview_menu"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:divider="@android:color/transparent" />
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_above="@id/layout_setting"
+                    android:layout_marginTop="5dp"
+                    android:background="@color/colorGray" />
+
+                <LinearLayout
+                    android:id="@+id/layout_setting"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:divider="@drawable/custom_devider"
+                    android:orientation="horizontal"
+                    android:showDividers="middle"
+                    android:weightSum="2">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:id="@+id/txt_setting_main"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_margin="@dimen/margin_header_navigation_main"
+                            android:drawableLeft="@drawable/ic_settings"
+                            android:fontFamily="@font/roboto_regular"
+                            android:padding="10dp"
+                            android:text="@string/setting"
+                            android:textColor="@color/colorGray"
+                            android:textSize="@dimen/textMedium" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:id="@+id/txt_logout_main"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_margin="@dimen/margin_header_navigation_main"
+                            android:drawableLeft="@drawable/ic_account"
+                            android:fontFamily="@font/roboto_regular"
+                            android:padding="10dp"
+                            android:text="@string/logout"
+                            android:textColor="@color/colorGray"
+                            android:textSize="@dimen/textMedium" />
+                    </RelativeLayout>
+                </LinearLayout>
+            </RelativeLayout>
+        </android.support.design.widget.NavigationView>
+
+    </android.support.v4.widget.DrawerLayout>
 
 </android.support.constraint.ConstraintLayout>
