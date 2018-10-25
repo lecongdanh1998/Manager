@@ -200,7 +200,7 @@ public class SignIn extends BaseActivity implements View.OnClickListener {
             requestSignIn.add(signInRequest);
             progressDialog.show();
         }
-//        intentView(MainActivity.class);
+        intentView(MainActivity.class);
     }
 
     @Override
