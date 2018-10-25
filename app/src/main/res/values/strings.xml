@@ -25,4 +25,5 @@
     <string name = "btnDraff">Draff</string>
     <string name = "btnPending">Pending</string>
     <string name = "btnPublic">Public</string>
+    <string name="overview">Overview</string>
 </resources>
