@@ -141,7 +141,7 @@ public class Post extends Fragment implements View.OnClickListener {
 
     }
     private void intentView(Class c) {
-        Intent intent = new Intent(getContext(),c );
+        Intent intent = new Intent(getActivity(),c );
         startActivity(intent);
         getActivity().finish();
     }

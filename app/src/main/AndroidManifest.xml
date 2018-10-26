@@ -29,6 +29,8 @@
         <activity android:name=".View.MainActivity" />
         <activity android:name=".View.SignIn" android:windowSoftInputMode="adjustResize|adjustPan"></activity>
         <activity android:name=".View.MySiteAddSiteActivity"></activity>
+        <activity android:name=".View.Post.PostDetail.PostDetails"></activity>
+        <activity android:name=".View.Post.PostDetail.PostDetailsUpdate"></activity>
         <receiver android:name=".Networking.NetworkStateMonitor"
             tools:ignore="InnerclassSeparator">
             <intent-filter>
