@@ -155,6 +155,7 @@ public class SignIn extends BaseActivity implements View.OnClickListener {
                 progressDialog.dismiss();
                 Log.d("SUCCESS_SIGNIN", response + "");
                 try {
+                    editor = dataLogin.edit();
                     JSONObject jsonObject = new JSONObject(response);
                     editor.putString("useremail", useremail);
                     editor.putString("userpassword", userpassword);

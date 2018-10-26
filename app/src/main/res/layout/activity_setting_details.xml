@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".View.Contact.ContactDetails.ContactDetails">
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_margin="@dimen/dimens_padding"
         android:background="@color/colorRed"
         android:padding="@dimen/margin_5dp"
@@ -18,7 +20,7 @@
             android:padding="@dimen/dimens_padding">
 
             <TextView
-                android:id="@+id/txt_title_item_contact"
+                android:id="@+id/txt_display_name_setting_detail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_medium"
@@ -27,36 +29,25 @@
                 android:textSize="@dimen/textLager" />
 
             <TextView
-                android:id="@+id/txt_email_item_contact"
+                android:id="@+id/txt_value_setting_detail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/txt_title_item_contact"
+                android:layout_below="@id/txt_display_name_setting_detail"
                 android:layout_marginTop="@dimen/margin_5dp"
-                android:fontFamily="@font/roboto_regular"
-                android:text="s@gmail.com - "
+                android:fontFamily="@font/roboto_medium"
+                android:text="Rất đẹp"
                 android:textSize="@dimen/textMedium" />
 
             <TextView
-                android:id="@+id/txt_phone_item_contact"
+                android:id="@+id/txt_details_setting_detail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/txt_title_item_contact"
+                android:layout_below="@id/txt_value_setting_detail"
                 android:layout_marginTop="@dimen/margin_5dp"
-                android:layout_toRightOf="@id/txt_email_item_contact"
-                android:fontFamily="@font/roboto_regular"
-                android:text="012345"
-                android:textSize="@dimen/textMedium" />
-
-            <TextView
-                android:id="@+id/txt_dateTime_item_contact"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/txt_email_item_contact"
-                android:layout_marginTop="@dimen/margin_5dp"
-                android:fontFamily="@font/roboto_regular"
-                android:text="20:00"
+                android:fontFamily="@font/roboto_medium"
+                android:text="Rất đẹp"
                 android:textSize="@dimen/textMedium" />
 
         </RelativeLayout>
     </android.support.v7.widget.CardView>
-</RelativeLayout>
+</ScrollView>

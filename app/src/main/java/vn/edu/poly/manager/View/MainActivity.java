@@ -18,6 +18,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,6 +31,7 @@ import vn.edu.poly.manager.R;
 import vn.edu.poly.manager.View.Contact.Contact;
 import vn.edu.poly.manager.View.Dashboard.Dashboard;
 import vn.edu.poly.manager.View.Post.Post;
+import vn.edu.poly.manager.View.Setting.Setting;
 
 public class MainActivity extends BaseActivity implements AdapterView.OnItemClickListener, View.OnClickListener {
 
@@ -44,6 +46,7 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
     private SharedPreferences.Editor editor;
     private ImageView img_back_MysiteToobar;
     private ImageView btn_cancel;
+    private RelativeLayout btn_setting;
     String screen;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +58,6 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
         try {
             Intent intent = getIntent();
             screen = intent.getStringExtra("screen");
-            Toast.makeText(this, "" + screen, Toast.LENGTH_SHORT).show();
             if (screen.equalsIgnoreCase("post")){
                 transactionFrangment(new Post(), "Post");
             }else {
@@ -78,7 +80,7 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
         listview_menu = findViewById(R.id.listview_menu);
         img_back_MysiteToobar = findViewById(R.id.img_back_MysiteToobar);
         img_back_MysiteToobar.setImageResource(R.drawable.ic_menu_white);
-        btn_cancel = findViewById(R.id.btn_cancel);
+        btn_setting = findViewById(R.id.btn_setting_main);
     }
 
     /*
@@ -89,7 +91,7 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
     private void initEventButton() {
         listview_menu.setOnItemClickListener(this);
         img_back_MysiteToobar.setOnClickListener(this);
-        btn_cancel.setOnClickListener(this);
+        btn_setting.setOnClickListener(this);
     }
 
     /*
@@ -186,8 +188,8 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
             case R.id.img_back_MysiteToobar:
                 drawer_layout.openDrawer(GravityCompat.START);
                 break;
-            case R.id.btn_cancel:
-                drawer_layout.closeDrawers();
+            case R.id.btn_setting_main:
+                transactionFrangment(new Setting(), "Setting");
                 break;
         }
     }

@@ -47,14 +47,6 @@
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true">
 
-                    <ImageView
-                        android:id="@+id/btn_cancel"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
-                        android:layout_marginTop="@dimen/margin_5dp"
-                        android:src="@drawable/ic_cancel_black_24dp" />
-
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/avatar_user_header_navigation_main"
                         android:layout_width="@dimen/avatar_size"
@@ -127,6 +119,7 @@
                     android:weightSum="2">
 
                     <RelativeLayout
+                        android:id="@+id/btn_setting_main"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1">
