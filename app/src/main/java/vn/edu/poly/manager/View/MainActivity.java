@@ -47,6 +47,7 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
     private ImageView img_back_MysiteToobar;
     private ImageView btn_cancel;
     private RelativeLayout btn_setting;
+    private ImageView img_find_MysiteToobar;
     String screen;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +59,7 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
         try {
             Intent intent = getIntent();
             screen = intent.getStringExtra("screen");
+            Toast.makeText(this, "" + screen, Toast.LENGTH_SHORT).show();
             if (screen.equalsIgnoreCase("post")){
                 transactionFrangment(new Post(), "Post");
             }else {
@@ -79,6 +81,7 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
         toolbar_title = findViewById(R.id.txt_name_MySiteToobar);
         listview_menu = findViewById(R.id.listview_menu);
         img_back_MysiteToobar = findViewById(R.id.img_back_MysiteToobar);
+        img_find_MysiteToobar = findViewById(R.id.img_find_MysiteToobar);
         img_back_MysiteToobar.setImageResource(R.drawable.ic_menu_white);
         btn_setting = findViewById(R.id.btn_setting_main);
     }
@@ -92,6 +95,7 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
         listview_menu.setOnItemClickListener(this);
         img_back_MysiteToobar.setOnClickListener(this);
         btn_setting.setOnClickListener(this);
+        img_find_MysiteToobar.setOnClickListener(this);
     }
 
     /*
@@ -184,12 +188,15 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
     @Override
     public void onClick(View v) {
         int id = v.getId();
+        Fragment fragment;
         switch (id){
             case R.id.img_back_MysiteToobar:
                 drawer_layout.openDrawer(GravityCompat.START);
                 break;
             case R.id.btn_setting_main:
                 transactionFrangment(new Setting(), "Setting");
+                break;
+            case R.id.img_find_MysiteToobar:
                 break;
         }
     }
