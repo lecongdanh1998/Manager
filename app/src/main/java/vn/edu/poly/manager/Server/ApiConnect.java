@@ -31,4 +31,15 @@ public class ApiConnect {
     public static final String URL_CONNECT_PENDING_PUBLIC(String site,String url){
         return "http://"+site+"."+url+"/api/posts/public";
     }
+
+    public static final String URL_CONNECT_GALLERYS(String site,String url){
+        return "http://"+site+"."+url+"/api/galleries";
+    }
+    public static final String URL_CONNECT_GALLERYS_IMAGES(String site,String url){
+        return "http://"+site+"."+url+"/";
+    }
+
+
+
+    public static final String URL_GET_POST_CONTACT = "demo.vnlead.webstarterz.com/api/contacts";
 }

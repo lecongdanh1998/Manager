@@ -4,10 +4,9 @@
     package="vn.edu.poly.manager">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -25,25 +24,19 @@
         </activity>
         <activity
             android:name=".View.MySiteActivity"
-            android:windowSoftInputMode="adjustResize|adjustPan" />
+            android:windowSoftInputMode="adjustResize|adjustPan">
+        </activity>
         <activity android:name=".View.MainActivity" />
-        <activity
-            android:name=".View.SignIn"
-            android:windowSoftInputMode="adjustResize" />
-        <activity android:name=".View.MySiteAddSiteActivity" />
-
-        <receiver
-            android:name=".Networking.NetworkStateMonitor"
+        <activity android:name=".View.SignIn" android:windowSoftInputMode="adjustResize|adjustPan"></activity>
+        <activity android:name=".View.MySiteAddSiteActivity"></activity>
+        <activity android:name=".View.Post.PostDetail.PostDetails"></activity>
+        <activity android:name=".View.Post.PostDetail.PostDetailsUpdate"></activity>
+        <receiver android:name=".Networking.NetworkStateMonitor"
             tools:ignore="InnerclassSeparator">
             <intent-filter>
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
             </intent-filter>
         </receiver>
-
-        <activity android:name=".View.Post.PostDetail.PostDetails" />
-        <activity android:name=".View.Post.PostDetail.PostDetailsUpdate"
-            android:windowSoftInputMode="adjustResize|adjustPan"
-            ></activity>
     </application>
 
 </manifest>

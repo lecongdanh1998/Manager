@@ -53,6 +53,7 @@ public class MenuAdapter extends BaseAdapter {
             convertView = layoutInflater.inflate(layout, null);
             viewHolder = new ViewHolder();
             viewHolder.txt_title_menu = convertView.findViewById(R.id.txt_title_menu);
+            convertView.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }

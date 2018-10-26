@@ -4,6 +4,7 @@
     <string name="Str_txtNewSite">New Site</string>
     <string name="Str_extHintFindMySite">Search Sites</string>
     <string name="Str_btnAddMySite">New Site</string>
+    <string name="Str_UploadGallery">Upload</string>
     <string name="Str_btnbrowse">Duyệt bài</string>
     <string name="Str_btnSave">Lưu bài viết</string>
     <string name="your_site_signIn">Your site</string>
@@ -24,7 +25,11 @@
     <string name="oke">OKE</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="btnDraff">Draff</string>
-    <string name="btnPending">Pending</string>
-    <string name="btnPublic">Public</string>
+    <string name = "btnDraff">Draff</string>
+    <string name = "btnPending">Pending</string>
+    <string name = "btnPublic">Public</string>
+    <string name="overview">Overview</string>
+    <string name="txtMyGallery">MY GALLERY</string>
+    <string name="txtCategoryMyGallery">Select Category</string>
+    <string name="txtSearchMyGallery">Search Image</string>
 </resources>

@@ -4,15 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
     tools:context=".View.SignIn">
 
     <ScrollView
+        android:layout_above="@id/btn_signIn"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <ImageView
                 android:id="@+id/img_logo_signIn"
@@ -29,21 +32,21 @@
                 android:layout_centerHorizontal="true">
 
                 <TextView
-                    android:layout_centerHorizontal="true"
                     android:id="@+id/txt_your_site_signIn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
                     android:fontFamily="@font/roboto_bold"
                     android:text="@string/your_site_signIn"
                     android:textColor="@color/colorPrimary"
                     android:textSize="@dimen/text_size_your_site_signIn" />
 
                 <TextView
-                    android:layout_centerHorizontal="true"
                     android:id="@+id/txt_select_signIn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/txt_your_site_signIn"
+                    android:layout_centerHorizontal="true"
                     android:fontFamily="@font/roboto_light"
                     android:text="@string/select_site_signIn"
                     android:textColor="@color/colorGray"
@@ -59,91 +62,76 @@
                 android:layout_marginTop="@dimen/marginTop_font_signIn"
                 android:layout_marginRight="@dimen/marginTop_font_signIn"
                 android:orientation="vertical"
-                android:weightSum="4">
+                android:weightSum="2">
 
-                <TextView
-                    android:id="@+id/txt_username_signIn"
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/textInput_username_signIn"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:fontFamily="@font/roboto_regular"
-                    android:text="@string/username"
-                    android:textColor="@color/colorGray"
-                    android:textSize="@dimen/textMedium" />
+                    app:errorTextAppearance="@style/HintTextError"
+                    app:hintTextAppearance="@style/HintText">
 
-                <EditText
-                    android:id="@+id/edt_user_signIn"
+                    <android.support.v7.widget.AppCompatEditText
+                        android:id="@+id/edt_user_signIn"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/transparent"
+                        android:cursorVisible="true"
+                        android:fontFamily="@font/roboto_medium"
+                        android:hint="@string/placeholder_username"
+                        android:imeOptions="actionNext"
+                        android:inputType="textEmailAddress"
+                        android:paddingTop="@dimen/padding_edt_form_signIn"
+                        android:paddingBottom="@dimen/padding_edt_form_signIn"
+                        android:textColor="@color/colorBlack"
+                        android:textColorHint="@color/colorGray"
+                        android:textCursorDrawable="@color/colorPrimary"
+                        android:textSize="@dimen/textMedium" />
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/textInput_password_signIn"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_marginBottom="@dimen/dimens_padding"
                     android:layout_weight="1"
-                    android:background="@android:color/transparent"
-                    android:cursorVisible="true"
-                    android:fontFamily="@font/roboto_medium"
-                    android:hint="@string/placeholder_username"
-                    android:inputType="textEmailAddress"
-                    android:paddingTop="@dimen/padding_edt_form_signIn"
-                    android:paddingBottom="@dimen/padding_edt_form_signIn"
-                    android:textColor="@color/colorBlack"
-                    android:textColorHint="@color/colorGray"
-                    android:textCursorDrawable="@color/colorPrimary"
-                    android:textSize="@dimen/textMedium" />
+                    app:errorTextAppearance="@style/HintTextError"
+                    app:hintTextAppearance="@style/HintText"
+                    app:passwordToggleEnabled="true">
 
-                <TextView
-                    android:id="@+id/txt_password_signIn"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="@dimen/padding_edt_form_signIn"
-                    android:layout_weight="1"
-                    android:fontFamily="@font/roboto_regular"
-                    android:text="@string/password"
-                    android:textColor="@color/colorGray"
-                    android:textSize="@dimen/textMedium" />
-
-                <EditText
-                    android:id="@+id/edt_password_signIn"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@android:color/transparent"
-                    android:cursorVisible="true"
-                    android:fontFamily="@font/roboto_medium"
-                    android:hint="@string/placeholder_password"
-                    android:inputType="textPassword"
-                    android:paddingTop="@dimen/padding_edt_form_signIn"
-                    android:paddingBottom="@dimen/padding_edt_form_signIn"
-                    android:textColor="@color/colorBlack"
-                    android:textColorHint="@color/colorGray"
-                    android:textCursorDrawable="@color/colorPrimary"
-                    android:textSize="@dimen/textMedium" />
+                    <android.support.v7.widget.AppCompatEditText
+                        android:id="@+id/edt_password_signIn"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/transparent"
+                        android:cursorVisible="true"
+                        android:fontFamily="@font/roboto_medium"
+                        android:hint="@string/placeholder_password"
+                        android:imeOptions="actionDone"
+                        android:inputType="text"
+                        android:paddingTop="@dimen/padding_edt_form_signIn"
+                        android:paddingBottom="@dimen/padding_edt_form_signIn"
+                        android:textColor="@color/colorBlack"
+                        android:textColorHint="@android:color/transparent"
+                        android:textCursorDrawable="@color/colorPrimary"
+                        android:textSize="@dimen/textMedium"
+                        android:theme="@style/EditTextPassword" />
+                </android.support.design.widget.TextInputLayout>
             </LinearLayout>
-
-            <Button
-                android:id="@+id/btn_signIn"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/layout_form_singIn"
-                android:layout_marginLeft="@dimen/margin_form_signIn"
-                android:layout_marginTop="@dimen/marginTop_font_signIn"
-                android:layout_marginRight="@dimen/margin_form_signIn"
-                android:background="@drawable/custom_button"
-                android:fontFamily="@font/roboto_medium"
-                android:text="@string/continue_signIn"
-                android:textAllCaps="false"
-                android:textColor="@color/colorWhite"
-                android:textSize="@dimen/textMedium" />
-
-            <TextView
-                android:id="@+id/slogan_signIn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/btn_signIn"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="@dimen/marginTop_font_signIn"
-                android:layout_marginBottom="5dp"
-                android:fontFamily="@font/roboto_medium"
-                android:text="@string/slogan_signIn"
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/textLager" />
         </RelativeLayout>
     </ScrollView>
+
+    <Button
+        android:id="@+id/btn_signIn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="@dimen/marginTop_font_signIn"
+        android:background="@color/colorPrimary"
+        android:fontFamily="@font/roboto_medium"
+        android:text="@string/continue_signIn"
+        android:textAllCaps="false"
+        android:textColor="@color/colorWhite"
+        android:textSize="@dimen/textMedium" />
 </RelativeLayout>

@@ -6,9 +6,92 @@
     tools:context=".View.Setting.Setting">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+   <RelativeLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">
+       <EditText
+           android:layout_margin="@dimen/dimens_margin"
+           android:id="@+id/ext_Category_Gallery"
+           android:lines="1"
+           android:hint="@string/txtCategoryMyGallery"
+           android:textCursorDrawable="@null"
+           android:drawablePadding="10dp"
+           android:textStyle="bold"
+           android:layout_gravity="center"
+           android:textColor="@color/color_extHintGray"
+           android:textColorHint="@color/color_extHintGray"
+           android:textSize="@dimen/dimens_textsize"
+           android:inputType="text"
+           android:paddingLeft="10dp"
+           android:paddingRight="10dp"
+           android:layout_toLeftOf="@id/img_lietke_gallery"
+           android:background="@drawable/ext_custombackground"
+           android:layout_width="match_parent"
+           android:layout_height="@dimen/dimens_heightEditText" />
+       <ImageView
+           android:layout_toLeftOf="@id/img_danhsach_gallery"
+           android:layout_marginTop="@dimen/dimens_margin"
+           android:layout_below="@id/toobar_Mysite"
+           android:id="@+id/img_lietke_gallery"
+           android:src="@drawable/ic_format_list_bulleted_black_40dp"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content" />
+       <ImageView
+           android:layout_alignParentRight="true"
+           android:layout_marginTop="@dimen/dimens_margin"
+            android:layout_marginRight="@dimen/dimens_margin"
+           android:layout_below="@id/toobar_Mysite"
+           android:id="@+id/img_danhsach_gallery"
+           android:src="@drawable/ic_apps_black_40dp"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content" />
+       <RelativeLayout
+           android:layout_above="@id/btn_UploadGallery"
+           android:layout_below="@id/ext_Category_Gallery"
+           android:layout_width="match_parent"
+           android:layout_height="match_parent">
+       <EditText
+           android:id="@+id/ext_Search_Gallery"
+           android:lines="1"
+           android:textCursorDrawable="@null"
+           android:hint="@string/txtSearchMyGallery"
+           android:textStyle="bold"
+           android:layout_gravity="center"
+           android:textColor="@color/color_extHintGray"
+           android:textColorHint="@color/color_extHintGray"
+           android:textSize="@dimen/dimens_textsize"
+           android:inputType="text"
+           android:drawableStart="@drawable/ic_search_black_exthint"
+           android:paddingLeft="@dimen/dimens_paddingEditText"
+           android:paddingRight="10dp"
+           android:drawableLeft="@drawable/ic_search_black_exthint"
+           android:background="@drawable/ext_custombackground"
+           android:layout_marginLeft="@dimen/dimens_margin"
+           android:layout_marginRight="@dimen/dimens_margin"
+           android:layout_width="match_parent"
+           android:layout_height="@dimen/dimens_heightEditText" />
+       <ListView
+           android:layout_below="@id/ext_Search_Gallery"
+           android:id="@+id/lst_gallery"
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"></ListView>
+        <GridView
+            android:numColumns="3"
+            android:id="@+id/grd_gallery"
+            android:layout_below="@id/ext_Search_Gallery"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></GridView>
+       </RelativeLayout>
+       <Button
+           android:textColor="@color/color_txtWhite"
+           android:textSize="@dimen/dimens_textsize"
+           android:textAllCaps="false"
+           android:text="@string/Str_UploadGallery"
+           android:id="@+id/btn_UploadGallery"
+           android:layout_alignParentBottom="true"
+           android:layout_width="match_parent"
+           android:background="@color/color_btnAdd"
+           android:layout_height="@dimen/dimens_heigth_btnAdd" />
+   </RelativeLayout>
 
 </FrameLayout>

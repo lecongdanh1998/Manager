@@ -42,6 +42,7 @@ public abstract class BaseActivity extends AppCompatActivity{
     public static String updated_at = "";
     public static String name = "";
     public static String avatar = "";
+    public static int NumberFind;
     public static SharedPreferences dataLogin;
     public static SharedPreferences.Editor editor;
     private final int MY_PERMISSIONS_REQUEST_INTERNET = 10;
