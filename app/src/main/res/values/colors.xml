@@ -13,6 +13,9 @@
     <color name="color_txtTitleSiteGray">#bcbab8</color>
     <color name="color_txtTitleLst">#182952</color>
     <color name="color_btnAdd">#0077bb</color>
+<<<<<<< HEAD
     <color name="colorRed">#ff00</color>
+=======
+>>>>>>> k
     <color name="color_black">#000000</color>
 </resources>

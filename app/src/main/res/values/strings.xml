@@ -24,9 +24,15 @@
     <string name="oke">OKE</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+<<<<<<< HEAD
     <string name = "btnDraff">Draff</string>
     <string name = "btnPending">Pending</string>
     <string name = "btnPublic">Public</string>
     <string name="overview">Overview</string>
 
+=======
+    <string name="btnDraff">Draff</string>
+    <string name="btnPending">Pending</string>
+    <string name="btnPublic">Public</string>
+>>>>>>> k
 </resources>
