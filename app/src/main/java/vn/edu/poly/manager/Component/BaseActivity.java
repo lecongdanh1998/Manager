@@ -23,7 +23,7 @@ import vn.edu.poly.manager.Networking.NetworkStateMonitor;
 import vn.edu.poly.manager.R;
 
 public abstract class BaseActivity extends AppCompatActivity{
-    public static String url = "http://demo.vnlead.webstarterz.com/api/posts";
+
     public static String token = "";
     public static String id = "";
     public static String author_id = "";
@@ -42,7 +42,6 @@ public abstract class BaseActivity extends AppCompatActivity{
     public static String updated_at = "";
     public static String name = "";
     public static String avatar = "";
-    public static String LinkIMAGE = "http://demo.vnlead.webstarterz.com/storage/";
     public static SharedPreferences dataLogin;
     public static SharedPreferences.Editor editor;
     private final int MY_PERMISSIONS_REQUEST_INTERNET = 10;
@@ -80,6 +79,9 @@ public abstract class BaseActivity extends AppCompatActivity{
             }
         };
     }
+
+
+
 
 
     public void checkInternetPermission(Activity thisActivity) {

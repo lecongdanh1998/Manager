@@ -4,6 +4,8 @@
     <string name="Str_txtNewSite">New Site</string>
     <string name="Str_extHintFindMySite">Search Sites</string>
     <string name="Str_btnAddMySite">New Site</string>
+    <string name="Str_btnbrowse">Duyệt bài</string>
+    <string name="Str_btnSave">Lưu bài viết</string>
     <string name="your_site_signIn">Your site</string>
     <string name="select_site_signIn">Select to continue</string>
     <string name="username">Username</string>
