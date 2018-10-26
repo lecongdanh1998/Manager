@@ -7,15 +7,25 @@ public class POSTContructor implements Serializable {
     String txt_title;
     String txt_Time;
     String img_people;
+    String id;
 
     public POSTContructor() {
     }
 
-    public POSTContructor(String img_title, String txt_title, String txt_Time, String img_people) {
+    public POSTContructor(String img_title, String txt_title, String txt_Time, String img_people, String id) {
         this.img_title = img_title;
         this.txt_title = txt_title;
         this.txt_Time = txt_Time;
         this.img_people = img_people;
+        this.id = id;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getImg_title() {

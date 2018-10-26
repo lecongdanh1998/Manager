@@ -157,6 +157,9 @@ public class SignIn extends BaseActivity implements View.OnClickListener {
                     e.printStackTrace();
                 }
                 Toast.makeText(SignIn.this, "Login success!", Toast.LENGTH_SHORT).show();
+                editor.putString("SITESignIn",Site);
+                editor.putString("URLSignIn",Url);
+                editor.commit();
                 intentView(MainActivity.class);
             }
         }, new Response.ErrorListener() {

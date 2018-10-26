@@ -26,4 +26,6 @@
     <dimen name="margin_mess_dialog">10dp</dimen>
     <dimen name="textSize_button_dialog">15sp</dimen>
     <dimen name="margin_5dp">5dp</dimen>
+    <dimen name="dimens_marginPostDetails">16dp</dimen>
+    <dimen name="dimens_textsize14sp">14sp</dimen>
 </resources>
