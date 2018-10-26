@@ -1,16 +1,17 @@
 package vn.edu.poly.manager.View.Post;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.view.ViewPager;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -32,12 +33,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 import vn.edu.poly.manager.Adapter.POSTAdapter;
-import vn.edu.poly.manager.Adapter.ViewPagerAdapter;
 import vn.edu.poly.manager.Component.BaseActivity;
-import vn.edu.poly.manager.Component.CustomFontToolBar;
-import vn.edu.poly.manager.Model.FragmentModel;
 import vn.edu.poly.manager.Model.POSTContructor;
 import vn.edu.poly.manager.R;
+import vn.edu.poly.manager.Server.ApiConnect;
+import vn.edu.poly.manager.View.Post.PostDetail.PostDetails;
+import vn.edu.poly.manager.View.SignIn;
 
 public class Post extends Fragment implements View.OnClickListener {
     private View view;
@@ -52,10 +53,14 @@ public class Post extends Fragment implements View.OnClickListener {
     POSTAdapter adapter;
     String linkimages = "";
     String linkimagesAvatar = "";
+    String URL_CONNECT_WEBSITE = "";
+    String URL_CONNECT_AVATAR = "";
     ListView lstPost;
     Button btnDraff,btnPending,btnPublic;
     private ProgressDialog progressDialog;
     String TrangThai = "";
+    String Site = "";
+    String Url = "";
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -72,22 +77,53 @@ public class Post extends Fragment implements View.OnClickListener {
     }
 
     private void initData() {
+        
         progressDialog = new ProgressDialog(getContext());
+        BaseActivity.editor = BaseActivity.dataLogin.edit();
+        Site = BaseActivity.dataLogin.getString("SITESignIn","");
+        Url = BaseActivity.dataLogin.getString("URLSignIn","");
+        URL_CONNECT_WEBSITE = ApiConnect.URL_CONNECT_WEBSITE(Site,Url);
+        URL_CONNECT_AVATAR = ApiConnect.URL_CONNECT_AVATAR(Site,Url);
         btnDraff.setOnClickListener(this);
         btnPending.setOnClickListener(this);
         btnPublic.setOnClickListener(this);
-        btnDraff.setEnabled(false);
-        btnPublic.setEnabled(true);
-        btnPending.setEnabled(true);
-        btnDraff.setBackgroundColor(getResources().getColor(R.color.colorAccent));
-        btnPending.setBackgroundColor(getResources().getColor(R.color.color_btnAdd));
-        btnPublic.setBackgroundColor(getResources().getColor(R.color.color_btnAdd));
         arrayList = new ArrayList<>();
-        adapter = new POSTAdapter(getContext(),arrayList);
+        adapter = new POSTAdapter(getActivity(),arrayList);
         lstPost.setAdapter(adapter);
         adapter.notifyDataSetChanged();
         TrangThai = "DRAFT";
-        getJson(BaseActivity.url,TrangThai);
+        TrangThai = BaseActivity.dataLogin.getString("TRANGTHAI","");
+        if(TrangThai.toString().equals("DRAFT")){
+            btnDraff();
+            arrayList.clear();
+            getJson(URL_CONNECT_WEBSITE,TrangThai);
+        }
+        if(TrangThai.toString().equals("PENDING")){
+            btnPending();
+            arrayList.clear();
+            getJson(URL_CONNECT_WEBSITE,TrangThai);
+        }
+        if(TrangThai.toString().equals("PUBLISHED")){
+           btnPublic();
+            arrayList.clear();
+            getJson(URL_CONNECT_WEBSITE,TrangThai);
+        }
+
+
+
+
+        lstPost.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                BaseActivity.editor.putString("id",arrayList.get(position).getId());
+                BaseActivity.editor.commit();
+               intentView(PostDetails.class);
+            }
+        });
+        
+        
+        
+
 //        fragmentModelArrayList = new ArrayList<>();
 //        fragmentModelArrayList.add(new FragmentModel(new Draff(), "Draff"));
 //        fragmentModelArrayList.add(new FragmentModel(new Pending(), "Pending"));
@@ -96,8 +132,19 @@ public class Post extends Fragment implements View.OnClickListener {
 //        viewpager.setAdapter(viewPagerAdapter);
 //        new CustomFontToolBar(tablayout, getActivity()).setCustomFontTab();
 //        tablayout.setupWithViewPager(viewpager);
-    }
 
+
+
+
+
+
+
+    }
+    private void intentView(Class c) {
+        Intent intent = new Intent(getContext(),c );
+        startActivity(intent);
+        getActivity().finish();
+    }
     /*
      * register view
      * */
@@ -116,40 +163,57 @@ public class Post extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.btnDraff:
-                btnDraff.setEnabled(false);
-                btnPublic.setEnabled(true);
-                btnPending.setEnabled(true);
-                btnDraff.setBackgroundColor(getResources().getColor(R.color.colorAccent));
-                btnPending.setBackgroundColor(getResources().getColor(R.color.color_btnAdd));
-                btnPublic.setBackgroundColor(getResources().getColor(R.color.color_btnAdd));
+                btnDraff();
                 arrayList.clear();
                 TrangThai = "DRAFT";
-                getJson(BaseActivity.url,TrangThai);
+                getJson(URL_CONNECT_WEBSITE,TrangThai);
+
                 break;
             case R.id.btnPending:
-                btnDraff.setEnabled(true);
-                btnPublic.setEnabled(true);
-                btnPending.setEnabled(false);
-                btnDraff.setBackgroundColor(getResources().getColor(R.color.color_btnAdd));
-                btnPending.setBackgroundColor(getResources().getColor(R.color.colorAccent));
-                btnPublic.setBackgroundColor(getResources().getColor(R.color.color_btnAdd));
+                btnPending();
                 arrayList.clear();
                 TrangThai = "PENDING";
-                getJson(BaseActivity.url,TrangThai);
+                getJson(URL_CONNECT_WEBSITE,TrangThai);
                 break;
             case R.id.btnPublic:
-                btnDraff.setEnabled(true);
-                btnPublic.setEnabled(false);
-                btnPending.setEnabled(true);
-                btnDraff.setBackgroundColor(getResources().getColor(R.color.color_btnAdd));
-                btnPending.setBackgroundColor(getResources().getColor(R.color.color_btnAdd));
-                btnPublic.setBackgroundColor(getResources().getColor(R.color.colorAccent));
+                btnPublic();
                 arrayList.clear();
                 TrangThai = "PUBLISHED";
-                getJson(BaseActivity.url,TrangThai);
+                getJson(URL_CONNECT_WEBSITE,TrangThai);
+
                 break;
         }
     }
+    private void btnDraff(){
+        btnDraff.setEnabled(false);
+        btnPublic.setEnabled(true);
+        btnPending.setEnabled(true);
+        btnDraff.setBackgroundColor(getResources().getColor(R.color.colorAccent));
+        btnPending.setBackgroundColor(getResources().getColor(R.color.color_btnAdd));
+        btnPublic.setBackgroundColor(getResources().getColor(R.color.color_btnAdd));
+
+    }
+    private void btnPending(){
+        btnDraff.setEnabled(true);
+        btnPublic.setEnabled(true);
+        btnPending.setEnabled(false);
+        btnDraff.setBackgroundColor(getResources().getColor(R.color.color_btnAdd));
+        btnPending.setBackgroundColor(getResources().getColor(R.color.colorAccent));
+        btnPublic.setBackgroundColor(getResources().getColor(R.color.color_btnAdd));
+
+    }
+    private void btnPublic(){
+        btnDraff.setEnabled(true);
+        btnPublic.setEnabled(false);
+        btnPending.setEnabled(true);
+        btnDraff.setBackgroundColor(getResources().getColor(R.color.color_btnAdd));
+        btnPending.setBackgroundColor(getResources().getColor(R.color.color_btnAdd));
+        btnPublic.setBackgroundColor(getResources().getColor(R.color.colorAccent));
+    }
+
+
+
+
     private void getJson(String url, final String TrangThai) {
         setContentDialog("Loading", "Please wait...");
         progressDialog.show();
@@ -182,14 +246,14 @@ public class Post extends Fragment implements View.OnClickListener {
                                     BaseActivity.updated_at = jsonObject.getString("updated_at");
                                     BaseActivity.name = jsonObject.getString("name");
                                     BaseActivity.avatar = jsonObject.getString("avatar");
-                                    linkimages = BaseActivity.LinkIMAGE + BaseActivity.image;
-                                    linkimagesAvatar = BaseActivity.LinkIMAGE + BaseActivity.avatar;
+                                    linkimages = URL_CONNECT_AVATAR + BaseActivity.image;
+                                    linkimagesAvatar = URL_CONNECT_AVATAR + BaseActivity.avatar;
                                     String time1 = BaseActivity.created_at.substring(0,4);
                                     String time2 = BaseActivity.created_at.substring(5,7);
                                     String time3 = BaseActivity.created_at.substring(8,10);
                                     String time4 = BaseActivity.created_at.substring(11,16);
                                     String timeTong = time4+" "+time3+"/"+time2+"/"+time1;
-                                    arrayList.add(new POSTContructor(linkimages,BaseActivity.title,timeTong,linkimagesAvatar));
+                                    arrayList.add(new POSTContructor(linkimages,BaseActivity.title,timeTong,linkimagesAvatar,BaseActivity.id));
                                 }
 
                             }
@@ -217,5 +281,6 @@ public class Post extends Fragment implements View.OnClickListener {
         };
         requestQueue.add(jsonObjectRequest);
     }
+
 
 }

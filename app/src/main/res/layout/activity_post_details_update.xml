@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_BackgroundWhite"
+    tools:context=".View.Post.PostDetail.PostDetailsUpdate">
+    <include
+        layout="@layout/toobar_mysite"
+        android:id="@+id/toobar_Mysite"/>
+    <ScrollView
+        android:layout_above="@id/btn_browse_PostDetailsUpdate"
+        android:layout_below="@id/toobar_Mysite"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <EditText
+            android:layout_margin="@dimen/dimens_margin"
+            android:id="@+id/ext_title_editDetails"
+            android:lines="1"
+            android:textCursorDrawable="@null"
+            android:drawablePadding="10dp"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:textColor="@color/color_extHintGray"
+            android:textColorHint="@color/color_extHintGray"
+            android:textSize="@dimen/dimens_textsize"
+            android:inputType="text"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:drawableLeft="@drawable/ic_subtitles_black_24dp"
+            android:background="@drawable/ext_custombackground"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimens_heightEditText" />
+            <EditText
+                android:layout_below="@id/ext_title_editDetails"
+                android:layout_margin="@dimen/dimens_margin"
+                android:id="@+id/ext_content_editDetails"
+                android:textCursorDrawable="@null"
+                android:drawablePadding="10dp"
+                android:padding="10dp"
+                android:textStyle="bold"
+                android:textColor="@color/color_extHintGray"
+                android:textColorHint="@color/color_extHintGray"
+                android:textSize="@dimen/dimens_textsize"
+                android:drawableLeft="@drawable/ic_subtitles_black_24dp"
+                android:background="@drawable/ext_custombackground"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+    </ScrollView>
+    <Button
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom"
+        android:textColor="@color/color_txtWhite"
+        android:textSize="@dimen/dimens_textsize"
+        android:textAllCaps="false"
+        android:text="@string/Str_btnSave"
+        android:id="@+id/btn_browse_PostDetailsUpdate"
+        android:layout_width="match_parent"
+        android:background="@color/color_btnAdd"
+        android:layout_height="@dimen/dimens_heigth_btnAdd" />
+</RelativeLayout>
