@@ -43,6 +43,7 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
     private SharedPreferences.Editor editor;
     private ImageView img_back_MysiteToobar;
     private ImageView btn_cancel;
+    String screen;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,8 +51,19 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
         initView();
         initData();
         initEventButton();
-        if (savedInstanceState == null) {
-            transactionFrangment(new Dashboard(), "Dashboard");
+        try {
+            Intent intent = getIntent();
+            screen = intent.getStringExtra("screen");
+            Toast.makeText(this, "" + screen, Toast.LENGTH_SHORT).show();
+            if (screen.equalsIgnoreCase("post")){
+                transactionFrangment(new Post(), "Post");
+            }else {
+                transactionFrangment(new Dashboard(), "Dashboard");
+            }
+        } catch (Exception e){
+            if (savedInstanceState == null) {
+                transactionFrangment(new Dashboard(), "Dashboard");
+            }
         }
     }
 
