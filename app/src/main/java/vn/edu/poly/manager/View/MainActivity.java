@@ -27,6 +27,7 @@ import vn.edu.poly.manager.Adapter.MenuAdapter;
 import vn.edu.poly.manager.Component.BaseActivity;
 import vn.edu.poly.manager.Model.MenuModel;
 import vn.edu.poly.manager.R;
+import vn.edu.poly.manager.View.Contact.Contact;
 import vn.edu.poly.manager.View.Dashboard.Dashboard;
 import vn.edu.poly.manager.View.Post.Post;
 
@@ -137,6 +138,10 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
                 break;
             case 3:
 
+                break;
+            case 4:
+                fragment = new Contact();
+                transactionFrangment(fragment, "Contact");
                 break;
             case 5:
                 break;

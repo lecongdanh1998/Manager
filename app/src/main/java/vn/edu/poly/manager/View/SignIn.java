@@ -11,8 +11,10 @@ import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.provider.Settings;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -50,6 +52,7 @@ public class SignIn extends BaseActivity implements View.OnClickListener {
     private String userpassword;
     private ProgressDialog progressDialog;
     private RelativeLayout layout_your_site;
+    private TextInputLayout textInput_username_signIn, textInput_password_signIn;
     BroadcastReceiver broadcastReceiver;
     String Site = "";
     String Url = "";
@@ -89,7 +92,12 @@ public class SignIn extends BaseActivity implements View.OnClickListener {
         btn_signin = findViewById(R.id.btn_signIn);
         edt_user_signIn = findViewById(R.id.edt_user_signIn);
         edt_password_signIn = findViewById(R.id.edt_password_signIn);
+//        edt_password_signIn.setTypeface(edt_password_signIn.getTypeface());
+        edt_password_signIn.setTypeface(Typeface.DEFAULT);
+        edt_password_signIn.setTransformationMethod(new PasswordTransformationMethod());
         layout_your_site = findViewById(R.id.layout_your_site);
+        textInput_username_signIn = findViewById(R.id.textInput_username_signIn);
+        textInput_password_signIn = findViewById(R.id.textInput_password_signIn);
         progressDialog = new ProgressDialog(this);
     }
 
@@ -182,14 +190,14 @@ public class SignIn extends BaseActivity implements View.OnClickListener {
         int errorCode = 0;
 
         if (new ValidateForm().validateTextEmpty(useremail)){
-            edt_user_signIn.setHint("Please enter your email!");
-            edt_user_signIn.setHintTextColor(getResources().getColor(R.color.colorPrimary));
+            textInput_username_signIn.setHint("Enter your email!");
+            textInput_username_signIn.setError("Please enter your email!");
             errorCode ++;
         }
 
         if (new ValidateForm().validateTextEmpty(userpassword)){
-            edt_password_signIn.setHint("Please enter your password!");
-            edt_password_signIn.setHintTextColor(getResources().getColor(R.color.colorPrimary));
+            textInput_password_signIn.setHint("Enter your password!");
+            textInput_password_signIn.setError("Please enter your password!");
             errorCode ++;
         }
 
@@ -197,7 +205,7 @@ public class SignIn extends BaseActivity implements View.OnClickListener {
             requestSignIn.add(signInRequest);
             progressDialog.show();
         }
-        intentView(MainActivity.class);
+//        intentView(MainActivity.class);
     }
 
     @Override
