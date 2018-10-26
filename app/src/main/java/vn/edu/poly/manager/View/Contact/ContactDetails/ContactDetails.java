@@ -64,7 +64,6 @@ public class ContactDetails extends AppCompatActivity {
                             txt_content_contact_detail.setText(jsonObject.getString("content"));
                             txt_email_contact_detail.setText(jsonObject.getString("email") + " ");
                             txt_phone_contact_detail.setText(jsonObject.getString("phone"));
-
                             String dateTime = jsonObject.getString("created_at");
                             StringTokenizer tk = new StringTokenizer(dateTime);
                             String dateT = tk.nextToken();

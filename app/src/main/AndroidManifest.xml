@@ -30,7 +30,9 @@
         <activity
             android:name=".View.SignIn"
             android:windowSoftInputMode="adjustResize" />
-        <activity android:name=".View.MySiteAddSiteActivity" />
+        <activity
+            android:name=".View.MySiteAddSiteActivity"
+            android:windowSoftInputMode="adjustResize" />
         <activity android:name=".View.Post.PostDetail.PostDetails" />
         <activity android:name=".View.Post.PostDetail.PostDetailsUpdate" />
         <activity android:name=".View.Setting.SettingDetails.SetttingDetails" />

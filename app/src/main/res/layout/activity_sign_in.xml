@@ -121,7 +121,6 @@
             </LinearLayout>
         </RelativeLayout>
     </ScrollView>
-
     <Button
         android:id="@+id/btn_signIn"
         android:layout_width="match_parent"

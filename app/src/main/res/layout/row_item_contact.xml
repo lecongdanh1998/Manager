@@ -56,7 +56,6 @@
                 android:fontFamily="@font/roboto_regular"
                 android:text="20:00"
                 android:textSize="@dimen/textMedium" />
-
         </RelativeLayout>
     </android.support.v7.widget.CardView>
 </RelativeLayout>

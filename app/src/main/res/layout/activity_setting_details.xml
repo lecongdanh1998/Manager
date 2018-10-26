@@ -47,7 +47,6 @@
                 android:fontFamily="@font/roboto_medium"
                 android:text="Rất đẹp"
                 android:textSize="@dimen/textMedium" />
-
         </RelativeLayout>
     </android.support.v7.widget.CardView>
 </ScrollView>

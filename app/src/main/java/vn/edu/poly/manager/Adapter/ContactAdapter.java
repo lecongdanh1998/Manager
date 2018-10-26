@@ -78,7 +78,6 @@ public class ContactAdapter extends BaseAdapter {
         SimpleDateFormat dateFormatTime2 = new SimpleDateFormat("hh:mm");
         SimpleDateFormat dateFormatDate = new SimpleDateFormat("yyyy-MM-dd");
         SimpleDateFormat dateFormatDate2 = new SimpleDateFormat("dd/MM/yyyy");
-
         try {
             Date timeFormat = dateFormatTime.parse(time);
             time = dateFormatTime2.format(timeFormat);

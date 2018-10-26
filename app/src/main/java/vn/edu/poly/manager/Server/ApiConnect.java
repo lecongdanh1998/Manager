@@ -54,4 +54,5 @@ public class ApiConnect {
     public static final String URL_GET_POST_SETTING_DETAIL(String site, String url, String id) {
         return "http://" + site + "." + url + "/api/settings/" + id;
     }
+
 }

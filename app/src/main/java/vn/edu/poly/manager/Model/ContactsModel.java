@@ -97,4 +97,5 @@ public class ContactsModel implements Serializable {
     public void setCreate_at(String create_at) {
         this.create_at = create_at;
     }
+
 }

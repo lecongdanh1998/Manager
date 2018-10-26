@@ -60,26 +60,6 @@ public class SignIn extends BaseActivity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
-//        final Dialog dialog = new Dialog(this);
-//        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-//        dialog.setContentView(R.layout.custom_dialog_connect_internet);
-//        dialog.setCancelable(false);
-//        Button button = dialog.findViewById(R.id.btn_connect_internet);
-//        button.setOnClickListener(this);
-//        broadcastReceiver = new BroadcastReceiver() {
-//            @Override
-//            public void onReceive(Context context, Intent intent) {
-//                if (new NetworkStateMonitor().checkInterNet(context)){
-//                    dialog.dismiss();
-//                    dialog.cancel();
-//                    Toast.makeText(context, "Connected internet", Toast.LENGTH_SHORT).show();
-//                } else {
-//                    Toast.makeText(context, "Vui long kiem tra ket noi inter net",
-//                            Toast.LENGTH_SHORT).show();
-//                    dialog.show();
-//                }
-//            }
-//        };
         initView();
         initData();
         initEventButton();
@@ -131,7 +111,6 @@ public class SignIn extends BaseActivity implements View.OnClickListener {
                 //add website url
                 break;
             case R.id.btn_connect_internet:
-//                startActivityForResult(new Intent(Settings.ACTION_SETTINGS) , 0);
                 break;
             default:
                 break;

@@ -109,7 +109,6 @@ public class Contact extends Fragment implements View.OnClickListener, AdapterVi
                                     pos = jsonObject.getString("pos");
                                     status = jsonObject.getString("status");
                                     create_at = jsonObject.getString("created_at");
-
                                     contactsModelArrayList.add(new ContactsModel(id,
                                             fullName,
                                             email,

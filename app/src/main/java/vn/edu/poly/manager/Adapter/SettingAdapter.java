@@ -59,7 +59,6 @@ public class SettingAdapter extends BaseAdapter {
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
-
         SettingModel settingModel = settingModelList.get(position);
         viewHolder.txt_title_setting.setText(settingModel.getDisplay_name());
         viewHolder.txt_description_setting.setText(settingModel.getValue());

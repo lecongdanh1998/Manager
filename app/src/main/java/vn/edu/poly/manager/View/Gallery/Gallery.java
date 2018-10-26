@@ -86,11 +86,6 @@ public class Gallery extends Fragment implements View.OnClickListener {
         URL_CONNECT_GALLERY = ApiConnect.URL_CONNECT_GALLERYS(Site,Url);
         URL_CONNECT_GALLERY_IMAGES = ApiConnect.URL_CONNECT_GALLERYS_IMAGES(Site,Url);
         listview(URL_CONNECT_GALLERY);
-
-
-
-
-
     }
 
 
