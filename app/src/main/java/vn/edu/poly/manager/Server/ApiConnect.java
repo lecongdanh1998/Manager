@@ -10,4 +10,5 @@ public class ApiConnect {
     public static final String URL_UPDATE_USER_AVATAR(String id){
         return "http://demo.vnlead.webstarterz.com/api/users/" + id + "/updateAvatar";
     }
+    public static final String URL_GET_POST_CONTACT = "demo.vnlead.webstarterz.com/api/contacts";
 }
