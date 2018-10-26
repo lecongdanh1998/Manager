@@ -10,10 +10,12 @@ import vn.edu.poly.manager.R;
 
 
 public class Contact extends Fragment {
+    private View view;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_contact, container, false);
+        view = inflater.inflate(R.layout.fragment_contact, container, false);
+        return view;
     }
 }
