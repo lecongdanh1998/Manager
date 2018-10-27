@@ -5,11 +5,13 @@
     android:layout_height="match_parent">
 
     <android.support.v7.widget.CardView
+        android:padding="@dimen/dimens_margin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardCornerRadius="@dimen/margin_5dp">
 
         <LinearLayout
+            android:padding="@dimen/dimens_margin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -22,7 +24,7 @@
                 android:fontFamily="@font/roboto_bold"
                 android:text="P"
                 android:textColor="@color/color_black"
-                android:textSize="@dimen/textLager" />
+                android:textSize="@dimen/textDialogWait" />
 
             <TextView
                 android:id="@+id/txt_wait_2"
@@ -31,7 +33,7 @@
                 android:fontFamily="@font/roboto_bold"
                 android:text="o"
                 android:textColor="@color/color_black"
-                android:textSize="@dimen/textLager" />
+                android:textSize="@dimen/textDialogWait" />
 
             <TextView
                 android:id="@+id/txt_wait_3"
@@ -40,7 +42,7 @@
                 android:fontFamily="@font/roboto_bold"
                 android:text="w"
                 android:textColor="@color/color_black"
-                android:textSize="@dimen/textLager" />
+                android:textSize="@dimen/textDialogWait" />
 
             <TextView
                 android:id="@+id/txt_wait_4"
@@ -49,7 +51,7 @@
                 android:fontFamily="@font/roboto_bold"
                 android:text="e"
                 android:textColor="@color/color_black"
-                android:textSize="@dimen/textLager" />
+                android:textSize="@dimen/textDialogWait" />
 
             <TextView
                 android:id="@+id/txt_wait_5"
@@ -58,7 +60,52 @@
                 android:fontFamily="@font/roboto_bold"
                 android:text="r"
                 android:textColor="@color/color_black"
-                android:textSize="@dimen/textLager" />
+                android:textSize= "@dimen/textDialogWait" />
+
+            <TextView
+                android:id="@+id/txt_wait_6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_bold"
+                android:text=" b"
+                android:textColor="@color/color_black"
+                android:textSize= "@dimen/textDialogWait" />
+
+            <TextView
+                android:id="@+id/txt_wait_7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_bold"
+                android:text="y"
+                android:textColor="@color/color_black"
+                android:textSize= "@dimen/textDialogWait" />
+
+            <TextView
+                android:id="@+id/txt_wait_8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_bold"
+                android:text=" N"
+                android:textColor="@color/color_black"
+                android:textSize= "@dimen/textDialogWait" />
+
+            <TextView
+                android:id="@+id/txt_wait_9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_bold"
+                android:text="K"
+                android:textColor="@color/color_black"
+                android:textSize= "@dimen/textDialogWait" />
+
+            <TextView
+                android:id="@+id/txt_wait_10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_bold"
+                android:text="S"
+                android:textColor="@color/color_black"
+                android:textSize= "@dimen/textDialogWait" />
         </LinearLayout>
     </android.support.v7.widget.CardView>
 </RelativeLayout>

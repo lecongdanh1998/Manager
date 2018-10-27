@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="vn.edu.poly.manager">
+
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
@@ -32,7 +33,6 @@
         <activity android:name=".View.Post.PostDetail.PostDetails" />
         <activity android:name=".View.Post.PostDetail.PostDetailsUpdate" />
         <activity android:name=".View.Setting.SettingDetails.SetttingDetails" />
-        <activity android:name=".View.Contact.ContactDetails.ContactDetails" />
 
         <receiver
             android:name=".Networking.NetworkStateMonitor"
@@ -41,6 +41,8 @@
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
             </intent-filter>
         </receiver>
+
+        <activity android:name=".View.Contact.ContactDetails.ContactDetails"></activity>
     </application>
 
 </manifest>

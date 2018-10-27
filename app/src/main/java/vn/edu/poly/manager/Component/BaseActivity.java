@@ -56,12 +56,6 @@ public abstract class BaseActivity extends AppCompatActivity{
     private final int MY_PERMISSIONS_REQUEST_INTERNET = 10;
     BroadcastReceiver broadcastReceiver;
 
-
-
-
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,8 +67,8 @@ public abstract class BaseActivity extends AppCompatActivity{
         dialog.setCancelable(false);
         Button button = dialog.findViewById(R.id.btn_connect_internet);
         button.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
+            @Override
+            public void onClick(View v) {
                 startActivityForResult(new Intent(Settings.ACTION_SETTINGS) , 0);
             }
         });
@@ -90,10 +84,6 @@ public abstract class BaseActivity extends AppCompatActivity{
             }
         };
     }
-
-
-
-
 
 
 

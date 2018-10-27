@@ -45,7 +45,6 @@ import vn.edu.poly.manager.Model.MenuModel;
 import vn.edu.poly.manager.R;
 import vn.edu.poly.manager.View.Contact.Contact;
 import vn.edu.poly.manager.View.Dashboard.Dashboard;
-import vn.edu.poly.manager.View.Gallery.Gallery;
 import vn.edu.poly.manager.View.Post.Post;
 import vn.edu.poly.manager.View.Post.PostDetail.PostDetails;
 import vn.edu.poly.manager.View.Setting.Setting;
@@ -78,7 +77,10 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
             screen = intent.getStringExtra("screen");
             if (screen.equalsIgnoreCase("post")){
                 transactionFrangment(new Post(), "Post");
-            }else {
+            } else if (screen.equalsIgnoreCase("help")){
+                transactionFrangment(new Help(), "Help");
+            }
+            else {
                 transactionFrangment(new Dashboard(), "Dashboard");
             }
         } catch (Exception e){
@@ -181,6 +183,8 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
                 transactionFrangment(fragment, "Contact");
                 break;
             case 5:
+                fragment = new Help();
+                transactionFrangment(fragment, "Help");
                 break;
             case 7:
                 break;
@@ -201,7 +205,6 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
 
     @Override
     public void onBackPressed() {
-
         super.onBackPressed();
     }
 
