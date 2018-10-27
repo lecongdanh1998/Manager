@@ -93,6 +93,7 @@ public class Post extends Fragment implements View.OnClickListener {
         adapter.notifyDataSetChanged();
         TrangThai = "DRAFT";
         TrangThai = BaseActivity.dataLogin.getString("TRANGTHAI","");
+        btnDraff();
         if(TrangThai.toString().equals("DRAFT")){
             btnDraff();
             arrayList.clear();

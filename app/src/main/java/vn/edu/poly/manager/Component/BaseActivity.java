@@ -11,14 +11,22 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.support.annotation.ColorRes;
+import android.support.annotation.DrawableRes;
+
 import android.support.v4.app.ActivityCompat;
+
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
+import vn.edu.poly.manager.Model.GalleryContructor;
 import vn.edu.poly.manager.Networking.NetworkStateMonitor;
 import vn.edu.poly.manager.R;
 
@@ -49,6 +57,12 @@ public abstract class BaseActivity extends AppCompatActivity{
 
     BroadcastReceiver broadcastReceiver;
 
+
+
+
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,8 +74,8 @@ public abstract class BaseActivity extends AppCompatActivity{
         dialog.setCancelable(false);
         Button button = dialog.findViewById(R.id.btn_connect_internet);
         button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+                @Override
+                public void onClick(View v) {
                 startActivityForResult(new Intent(Settings.ACTION_SETTINGS) , 0);
             }
         });
@@ -80,6 +94,10 @@ public abstract class BaseActivity extends AppCompatActivity{
             }
         };
     }
+
+
+
+
 
 
 
