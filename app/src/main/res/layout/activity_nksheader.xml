@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".View.Help.HelpDetais.NKSHeader">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/content_linear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <include layout="@layout/toobar_mysite" />
+    </android.support.design.widget.AppBarLayout>
+
+    <LinearLayout
+        android:layout_margin="@dimen/dimens_margin"
+        android:layout_below="@+id/content_linear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_marginTop="@dimen/dimens_margin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/logo_nks" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dimens_margin"
+            android:layout_marginTop="@dimen/dimens_margin"
+            android:fontFamily="@font/roboto_bold"
+            android:text="@string/infor_company"
+            android:textColor="@color/color_black"
+            android:textSize="@dimen/textLager" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dimens_margin"
+            android:layout_marginTop="@dimen/dimens_margin"
+            android:drawableLeft="@drawable/ic_mail_outline_black_24dp"
+            android:drawablePadding="@dimen/margin_5dp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="@string/nks_email"
+            android:textColor="@color/color_black"
+            android:textSize="@dimen/textMedium" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dimens_margin"
+            android:layout_marginTop="@dimen/dimens_margin"
+            android:drawableLeft="@drawable/ic_call_black_24dp"
+            android:drawablePadding="@dimen/margin_5dp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="@string/nks_phone"
+            android:textColor="@color/color_black"
+            android:textSize="@dimen/textMedium" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dimens_margin"
+            android:layout_marginTop="@dimen/dimens_margin"
+            android:drawableLeft="@drawable/ic_insert_link_black_24dp"
+            android:drawablePadding="@dimen/margin_5dp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="@string/nks_website"
+            android:textColor="@color/color_black"
+            android:textSize="@dimen/textMedium" />
+    </LinearLayout>
+</RelativeLayout>

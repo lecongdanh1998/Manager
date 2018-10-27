@@ -77,10 +77,6 @@ public abstract class BaseActivity extends AppCompatActivity{
         };
     }
 
-
-
-
-
     public void checkInternetPermission(Activity thisActivity) {
 
         if (ContextCompat.checkSelfPermission(thisActivity,

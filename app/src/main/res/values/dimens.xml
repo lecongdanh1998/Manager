@@ -20,7 +20,7 @@
     <dimen name="dimens_LstdividerHeight">10dp</dimen>
     <dimen name="dimens_heigth_btnAdd">60dp</dimen>
     <dimen name="margin_header_navigation_main">5dp</dimen>
-    <dimen name="padding_item_menu">20dp</dimen>
+    <dimen name="padding_item_menu">15dp</dimen>
     <dimen name="avatar_size">120dp</dimen>
     <dimen name="margin_dialog">20dp</dimen>
     <dimen name="margin_mess_dialog">10dp</dimen>
@@ -28,4 +28,6 @@
     <dimen name="margin_5dp">5dp</dimen>
     <dimen name="dimens_marginPostDetails">16dp</dimen>
     <dimen name="dimens_textsize14sp">14sp</dimen>
+    <dimen name="textDialogWait">30sp</dimen>
+    <dimen name="marginTop_help">40dp</dimen>
 </resources>

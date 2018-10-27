@@ -30,6 +30,7 @@ import vn.edu.poly.manager.Model.MenuModel;
 import vn.edu.poly.manager.R;
 import vn.edu.poly.manager.View.Contact.Contact;
 import vn.edu.poly.manager.View.Dashboard.Dashboard;
+import vn.edu.poly.manager.View.Help.Help;
 import vn.edu.poly.manager.View.Post.Post;
 import vn.edu.poly.manager.View.Setting.Setting;
 
@@ -59,10 +60,12 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
         try {
             Intent intent = getIntent();
             screen = intent.getStringExtra("screen");
-            Toast.makeText(this, "" + screen, Toast.LENGTH_SHORT).show();
             if (screen.equalsIgnoreCase("post")){
                 transactionFrangment(new Post(), "Post");
-            }else {
+            } else if (screen.equalsIgnoreCase("help")){
+                transactionFrangment(new Help(), "Help");
+            }
+            else {
                 transactionFrangment(new Dashboard(), "Dashboard");
             }
         } catch (Exception e){
@@ -113,6 +116,7 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
         menuModelArrayList.add(new MenuModel("Post"));
         menuModelArrayList.add(new MenuModel("Gallery"));
         menuModelArrayList.add(new MenuModel("Contact"));
+        menuModelArrayList.add(new MenuModel("Help"));
         /*
          * create menu adapter
          * */
@@ -162,6 +166,8 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
                 transactionFrangment(fragment, "Contact");
                 break;
             case 5:
+                fragment = new Help();
+                transactionFrangment(fragment, "Help");
                 break;
             case 7:
                 break;

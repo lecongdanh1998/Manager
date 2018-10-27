@@ -25,7 +25,7 @@
         </activity>
         <activity
             android:name=".View.MySiteActivity"
-            android:windowSoftInputMode="adjustResize"></activity>
+            android:windowSoftInputMode="adjustResize" />
         <activity android:name=".View.MainActivity" />
         <activity
             android:name=".View.SignIn"
@@ -45,7 +45,10 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name=".View.Contact.ContactDetails.ContactDetails"></activity>
+        <activity android:name=".View.Contact.ContactDetails.ContactDetails" />
+        <activity android:name=".View.Help.HelpDetais.NKSHeader" />
+        <activity android:name=".View.Help.HelpDetais.RequestHelp" />
+        <activity android:name=".View.Help.HelpDetais.SendHelp"></activity>
     </application>
 
 </manifest>
