@@ -32,4 +32,6 @@
     <string name="txtMyGallery">MY GALLERY</string>
     <string name="txtCategoryMyGallery">Select Category</string>
     <string name="txtSearchMyGallery">Search Image</string>
+    <string name="btn_save">Save</string>
+    <string name="btn_cancel">Cancel</string>
 </resources>

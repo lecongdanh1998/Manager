@@ -175,7 +175,7 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
      * */
     public void transactionFrangment(Fragment f, String s) {
         getSupportFragmentManager().beginTransaction().replace(R.id.content_frame,
-                f).commit();
+                f, s).commit();
         toolbar_title.setText(s);
         drawer_layout.closeDrawers();
     }

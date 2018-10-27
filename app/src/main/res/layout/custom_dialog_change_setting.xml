@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/dimens_margin"
+    app:cardCornerRadius="@dimen/margin_5dp">
+
+    <RelativeLayout
+        android:padding="@dimen/dimens_margin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="Site"
+            android:textColor="@color/color_black"
+            android:id="@+id/txt_title_dialog_setting"
+            android:textSize="@dimen/textLager"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_bold" />
+
+        <ImageView
+            android:layout_below="@id/txt_title_dialog_setting"
+            android:id="@+id/img_logo_setting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible" />
+
+        <EditText
+            android:selectAllOnFocus="true"
+            android:layout_below="@id/txt_title_dialog_setting"
+            android:id="@+id/edt_content_setting"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/colorPrimaryDark"
+            android:fontFamily="@font/roboto_medium"
+            android:text="@string/username"
+            android:textColor="@color/color_black"
+            android:textCursorDrawable="@color/colorPrimaryDark"
+            android:textSize="@dimen/textMedium" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/edt_content_setting">
+
+            <Button
+                android:id="@+id/btn_save_setting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@id/btn_cancel_setting"
+                android:background="@android:color/transparent"
+                android:fontFamily="@font/roboto_medium"
+                android:text="@string/btn_save"
+                android:textAllCaps="false"
+                android:textColor="@color/colorPrimary" />
+
+            <Button
+                android:id="@+id/btn_cancel_setting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:background="@android:color/transparent"
+                android:fontFamily="@font/roboto_medium"
+                android:text="@string/btn_cancel"
+                android:textAllCaps="false"
+                android:textColor="@color/colorRed" />
+        </RelativeLayout>
+    </RelativeLayout>
+</android.support.v7.widget.CardView>
