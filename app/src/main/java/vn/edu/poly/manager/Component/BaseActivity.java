@@ -155,6 +155,11 @@ public abstract class BaseActivity extends AppCompatActivity{
     @Override
     protected void onPause() {
         super.onPause();
-        unregisterReceiver(broadcastReceiver);
+        try{
+            unregisterReceiver(broadcastReceiver);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
     }
 }

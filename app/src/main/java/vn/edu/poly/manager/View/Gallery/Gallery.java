@@ -166,15 +166,14 @@ public class Gallery extends Fragment implements View.OnClickListener {
                                 viewGallery.setImageSize(ViewGroup.LayoutParams.MATCH_PARENT,300);
                                 viewGallery.setPlaceHolder(R.drawable.media_gallery_placeholder);
                                 viewGallery.setOrientation(MediaGalleryView.VERTICAL);
-                                viewGallery.notifyDataSetChanged();
                             }
                             else if (so == 3) {
                                 viewGallery.setSpanCount(3);
-                                viewGallery.setImageSize(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+                                viewGallery.setImageSize(300,300);
                                 viewGallery.setPlaceHolder(R.drawable.media_gallery_placeholder);
                                 viewGallery.setOrientation(MediaGalleryView.VERTICAL);
-                                viewGallery.notifyDataSetChanged();
                             }
+                            viewGallery.notifyDataSetChanged();
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
