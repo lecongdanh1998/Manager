@@ -18,6 +18,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,8 +30,8 @@ import vn.edu.poly.manager.Model.MenuModel;
 import vn.edu.poly.manager.R;
 import vn.edu.poly.manager.View.Contact.Contact;
 import vn.edu.poly.manager.View.Dashboard.Dashboard;
-import vn.edu.poly.manager.View.Gallery.Gallery;
 import vn.edu.poly.manager.View.Post.Post;
+import vn.edu.poly.manager.View.Setting.Setting;
 
 public class MainActivity extends BaseActivity implements AdapterView.OnItemClickListener, View.OnClickListener {
 
@@ -45,6 +46,7 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
     private SharedPreferences.Editor editor;
     private ImageView img_back_MysiteToobar;
     private ImageView btn_cancel;
+    private RelativeLayout btn_setting;
     private ImageView img_find_MysiteToobar;
     String screen;
     @Override
@@ -81,7 +83,7 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
         img_back_MysiteToobar = findViewById(R.id.img_back_MysiteToobar);
         img_find_MysiteToobar = findViewById(R.id.img_find_MysiteToobar);
         img_back_MysiteToobar.setImageResource(R.drawable.ic_menu_white);
-        btn_cancel = findViewById(R.id.btn_cancel);
+        btn_setting = findViewById(R.id.btn_setting_main);
     }
 
     /*
@@ -92,7 +94,7 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
     private void initEventButton() {
         listview_menu.setOnItemClickListener(this);
         img_back_MysiteToobar.setOnClickListener(this);
-        btn_cancel.setOnClickListener(this);
+        btn_setting.setOnClickListener(this);
         img_find_MysiteToobar.setOnClickListener(this);
     }
 
@@ -153,8 +155,7 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
                 transactionFrangment(fragment, "Post");
                 break;
             case 3:
-                fragment = new Gallery();
-                transactionFrangment(fragment, "Gallery");
+
                 break;
             case 4:
                 fragment = new Contact();
@@ -174,7 +175,7 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
      * */
     public void transactionFrangment(Fragment f, String s) {
         getSupportFragmentManager().beginTransaction().replace(R.id.content_frame,
-                f).commit();
+                f, s).commit();
         toolbar_title.setText(s);
         drawer_layout.closeDrawers();
     }
@@ -192,11 +193,10 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
             case R.id.img_back_MysiteToobar:
                 drawer_layout.openDrawer(GravityCompat.START);
                 break;
-            case R.id.btn_cancel:
-                drawer_layout.closeDrawers();
+            case R.id.btn_setting_main:
+                transactionFrangment(new Setting(), "Setting");
                 break;
             case R.id.img_find_MysiteToobar:
-
                 break;
         }
     }

@@ -54,7 +54,6 @@ public abstract class BaseActivity extends AppCompatActivity{
     public static SharedPreferences dataLogin;
     public static SharedPreferences.Editor editor;
     private final int MY_PERMISSIONS_REQUEST_INTERNET = 10;
-
     BroadcastReceiver broadcastReceiver;
 
 
@@ -85,10 +84,7 @@ public abstract class BaseActivity extends AppCompatActivity{
                 if (new NetworkStateMonitor().checkInterNet(context)){
                     dialog.dismiss();
                     dialog.cancel();
-                    Toast.makeText(context, "Connected internet", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(context, "Vui long kiem tra ket noi inter net",
-                            Toast.LENGTH_SHORT).show();
                     dialog.show();
                 }
             }
