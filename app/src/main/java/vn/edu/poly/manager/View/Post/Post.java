@@ -42,7 +42,7 @@ import vn.edu.poly.manager.View.SignIn;
 
 public class Post extends Fragment implements View.OnClickListener {
     private View view;
-    //    private TabLayout tablayout;
+//    private TabLayout tablayout;
 //    private ViewPager viewpager;
 //    private ArrayList<FragmentModel> fragmentModelArrayList;
 //    private ViewPagerAdapter viewPagerAdapter;
@@ -61,7 +61,6 @@ public class Post extends Fragment implements View.OnClickListener {
     String TrangThai = "";
     String Site = "";
     String Url = "";
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -78,7 +77,7 @@ public class Post extends Fragment implements View.OnClickListener {
     }
 
     private void initData() {
-
+        
         progressDialog = new ProgressDialog(getContext());
         BaseActivity.editor = BaseActivity.dataLogin.edit();
         Site = BaseActivity.dataLogin.getString("SITESignIn", "");
@@ -89,37 +88,37 @@ public class Post extends Fragment implements View.OnClickListener {
         btnPending.setOnClickListener(this);
         btnPublic.setOnClickListener(this);
         arrayList = new ArrayList<>();
-        adapter = new POSTAdapter(getActivity(), arrayList);
+        adapter = new POSTAdapter(getActivity(),arrayList);
         lstPost.setAdapter(adapter);
         adapter.notifyDataSetChanged();
         TrangThai = "DRAFT";
-        TrangThai = BaseActivity.dataLogin.getString("TRANGTHAI", "");
-        if (TrangThai.toString().equals("DRAFT")) {
+        TrangThai = BaseActivity.dataLogin.getString("TRANGTHAI","");
+        btnDraff();
+        if(TrangThai.toString().equals("DRAFT")){
             btnDraff();
             arrayList.clear();
-            getJson(URL_CONNECT_WEBSITE, TrangThai);
+            getJson(URL_CONNECT_WEBSITE,TrangThai);
         }
-        if (TrangThai.toString().equals("PENDING")) {
+        if(TrangThai.toString().equals("PENDING")){
             btnPending();
             arrayList.clear();
-            getJson(URL_CONNECT_WEBSITE, TrangThai);
+            getJson(URL_CONNECT_WEBSITE,TrangThai);
         }
-        if (TrangThai.toString().equals("PUBLISHED")) {
-            btnPublic();
+        if(TrangThai.toString().equals("PUBLISHED")){
+           btnPublic();
             arrayList.clear();
-            getJson(URL_CONNECT_WEBSITE, TrangThai);
+            getJson(URL_CONNECT_WEBSITE,TrangThai);
         }
 
 
         lstPost.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                BaseActivity.editor.putString("id", arrayList.get(position).getId());
+                BaseActivity.editor.putString("id",arrayList.get(position).getId());
                 BaseActivity.editor.commit();
-                intentView(PostDetails.class);
+               intentView(PostDetails.class);
             }
         });
-
 
 //        fragmentModelArrayList = new ArrayList<>();
 //        fragmentModelArrayList.add(new FragmentModel(new Draff(), "Draff"));
@@ -130,15 +129,13 @@ public class Post extends Fragment implements View.OnClickListener {
 //        new CustomFontToolBar(tablayout, getActivity()).setCustomFontTab();
 //        tablayout.setupWithViewPager(viewpager);
 
-
     }
 
     private void intentView(Class c) {
-        Intent intent = new Intent(getActivity(), c);
+        Intent intent = new Intent(getActivity(),c );
         startActivity(intent);
         getActivity().finish();
     }
-
     /*
      * register view
      * */
@@ -155,25 +152,25 @@ public class Post extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
+        switch (v.getId()){
             case R.id.btnDraff:
                 btnDraff();
                 arrayList.clear();
                 TrangThai = "DRAFT";
-                getJson(URL_CONNECT_WEBSITE, TrangThai);
+                getJson(URL_CONNECT_WEBSITE,TrangThai);
 
                 break;
             case R.id.btnPending:
                 btnPending();
                 arrayList.clear();
                 TrangThai = "PENDING";
-                getJson(URL_CONNECT_WEBSITE, TrangThai);
+                getJson(URL_CONNECT_WEBSITE,TrangThai);
                 break;
             case R.id.btnPublic:
                 btnPublic();
                 arrayList.clear();
                 TrangThai = "PUBLISHED";
-                getJson(URL_CONNECT_WEBSITE, TrangThai);
+                getJson(URL_CONNECT_WEBSITE,TrangThai);
 
                 break;
         }
@@ -189,7 +186,7 @@ public class Post extends Fragment implements View.OnClickListener {
 
     }
 
-    private void btnPending() {
+    private void btnPending(){
         btnDraff.setEnabled(true);
         btnPublic.setEnabled(true);
         btnPending.setEnabled(false);
@@ -208,7 +205,6 @@ public class Post extends Fragment implements View.OnClickListener {
         btnPublic.setBackground(getActivity().getDrawable(R.drawable.custom_background_button_tab));
     }
 
-
     private void getJson(String url, final String TrangThai) {
         setContentDialog("Loading", "Please wait...");
         progressDialog.show();
@@ -220,10 +216,10 @@ public class Post extends Fragment implements View.OnClickListener {
                         try {
                             progressDialog.dismiss();
                             JSONArray jsonArray = response.getJSONArray("data");
-                            for (int i = 0; i < jsonArray.length(); i++) {
+                            for (int i = 0;i<jsonArray.length();i++){
                                 JSONObject jsonObject = jsonArray.getJSONObject(i);
                                 BaseActivity.status = jsonObject.getString("status");
-                                if (BaseActivity.status.toString().equals(TrangThai)) {
+                                if(BaseActivity.status.toString().equals(TrangThai)){
                                     BaseActivity.id = jsonObject.getString("id");
                                     BaseActivity.author_id = jsonObject.getString("author_id");
                                     BaseActivity.category_id = jsonObject.getString("category_id");
@@ -243,12 +239,12 @@ public class Post extends Fragment implements View.OnClickListener {
                                     BaseActivity.avatar = jsonObject.getString("avatar");
                                     linkimages = URL_CONNECT_AVATAR + BaseActivity.image;
                                     linkimagesAvatar = URL_CONNECT_AVATAR + BaseActivity.avatar;
-                                    String time1 = BaseActivity.created_at.substring(0, 4);
-                                    String time2 = BaseActivity.created_at.substring(5, 7);
-                                    String time3 = BaseActivity.created_at.substring(8, 10);
-                                    String time4 = BaseActivity.created_at.substring(11, 16);
-                                    String timeTong = time4 + " " + time3 + "/" + time2 + "/" + time1;
-                                    arrayList.add(new POSTContructor(linkimages, BaseActivity.title, timeTong, linkimagesAvatar, BaseActivity.id));
+                                    String time1 = BaseActivity.created_at.substring(0,4);
+                                    String time2 = BaseActivity.created_at.substring(5,7);
+                                    String time3 = BaseActivity.created_at.substring(8,10);
+                                    String time4 = BaseActivity.created_at.substring(11,16);
+                                    String timeTong = time4+" "+time3+"/"+time2+"/"+time1;
+                                    arrayList.add(new POSTContructor(linkimages,BaseActivity.title,timeTong,linkimagesAvatar,BaseActivity.id));
                                 }
 
                             }
@@ -261,16 +257,16 @@ public class Post extends Fragment implements View.OnClickListener {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getContext(), "" + error.toString(), Toast.LENGTH_SHORT).show();
-                Log.d("Error", "" + error);
+                Toast.makeText(getContext(), ""+error.toString(), Toast.LENGTH_SHORT).show();
+                Log.d("Error",""+error);
             }
         }
-        ) {
+        ){
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
-                Map<String, String> stringMap = new HashMap<>();
-                BaseActivity.token = BaseActivity.dataLogin.getString("usertoken", "");
-                stringMap.put("Authorization", BaseActivity.token);
+                Map<String,String> stringMap = new HashMap<>();
+                BaseActivity.token  = BaseActivity.dataLogin.getString("usertoken","");
+                stringMap.put("Authorization",BaseActivity.token);
                 return stringMap;
             }
         };

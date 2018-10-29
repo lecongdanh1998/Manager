@@ -22,7 +22,6 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import vn.edu.poly.manager.Networking.NetworkStateMonitor;
 import vn.edu.poly.manager.R;
 
@@ -143,6 +142,11 @@ public abstract class BaseActivity extends AppCompatActivity{
     @Override
     protected void onPause() {
         super.onPause();
-        unregisterReceiver(broadcastReceiver);
+        try{
+            unregisterReceiver(broadcastReceiver);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
     }
 }

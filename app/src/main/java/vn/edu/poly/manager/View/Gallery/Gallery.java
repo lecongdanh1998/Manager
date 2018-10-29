@@ -2,8 +2,10 @@ package vn.edu.poly.manager.View.Gallery;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -11,6 +13,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
@@ -18,6 +21,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ViewFlipper;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -27,16 +31,17 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
+import net.alhazmy13.mediagallery.library.activity.MediaGallery;
+import net.alhazmy13.mediagallery.library.views.MediaGalleryView;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-
-import vn.edu.poly.manager.Adapter.GalleryAdapterGridview;
-import vn.edu.poly.manager.Adapter.GalleryAdapterListview;
 import vn.edu.poly.manager.Component.BaseActivity;
 import vn.edu.poly.manager.Model.GalleryContructor;
 import vn.edu.poly.manager.R;
@@ -52,14 +57,17 @@ public class Gallery extends Fragment implements View.OnClickListener {
     ArrayList<GalleryContructor> arrayList;
     ListView listView;
     GridView gridView;
-    GalleryAdapterGridview adapterGridview;
-    GalleryAdapterListview adapterListview;
     String Site = "";
     String Url = "";
     String URL_CONNECT_GALLERY = "";
     String URL_CONNECT_GALLERY_IMAGES = "";
     String LinkImages = "";
     private ProgressDialog progressDialog;
+    private ViewFlipper simpleViewFlipper;
+    MediaGalleryView viewGallery;
+    ArrayList<String> list;
+    String imagesCode;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -75,52 +83,65 @@ public class Gallery extends Fragment implements View.OnClickListener {
         progressDialog.setMessage(messager);
     }
 
+
+
+
     private void initData() {
         progressDialog = new ProgressDialog(getContext());
         img_danhsach.setOnClickListener(this);
         img_lietke.setOnClickListener(this);
         btnUpload.setOnClickListener(this);
+        viewGallery.setOnClickListener(this);
         BaseActivity.editor = BaseActivity.dataLogin.edit();
-        Site = BaseActivity.dataLogin.getString("SITESignIn","");
-        Url = BaseActivity.dataLogin.getString("URLSignIn","");
-        URL_CONNECT_GALLERY = ApiConnect.URL_CONNECT_GALLERYS(Site,Url);
-        URL_CONNECT_GALLERY_IMAGES = ApiConnect.URL_CONNECT_GALLERYS_IMAGES(Site,Url);
-        listview(URL_CONNECT_GALLERY);
+        Site = BaseActivity.dataLogin.getString("SITESignIn", "");
+        Url = BaseActivity.dataLogin.getString("URLSignIn", "");
+        URL_CONNECT_GALLERY = ApiConnect.URL_CONNECT_GALLERYS(Site, Url);
+        URL_CONNECT_GALLERY_IMAGES = ApiConnect.URL_CONNECT_GALLERYS_IMAGES(Site, Url);
+        list = new ArrayList<>();
+        Lietke(URL_CONNECT_GALLERY);
+
+        viewGallery.setOnImageClickListener(new MediaGalleryView.OnImageClicked() {
+            @Override
+            public void onImageClicked(int pos) {
+                MediaGallery.Builder(getActivity(), list)
+                        .title("Media Gallery")
+                        .backgroundColor(R.color.color_extHintGray)
+                        .placeHolder(R.drawable.media_gallery_placeholder)
+                        .selectedImagePosition(pos)
+                        .show();
+            }
+        });
+    }
+
+    public String bitMapToString(Bitmap bitmap) {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
+        byte[] b = baos.toByteArray();
+        return Base64.encodeToString(b, Base64.DEFAULT);
     }
 
 
-    private void listview(String url_connect_gallery) {
-        listView.setVisibility(View.VISIBLE);
-        gridView.setVisibility(View.GONE);
+    private void Lietke(String url_connect_gallery) {
         img_lietke.setEnabled(false);
         img_danhsach.setEnabled(true);
         img_lietke.setImageResource(R.drawable.ic_format_list_bulleted_blue_40dp);
         img_danhsach.setImageResource(R.drawable.ic_apps_black_40dp);
-        arrayList = new ArrayList<>();
-        adapterListview = new GalleryAdapterListview(getContext(),arrayList);
-        listView.setAdapter(adapterListview);
-        adapterListview.notifyDataSetChanged();
-        getJsonImageGallery(url_connect_gallery,1);
-
+        list.clear();
+        getJsonImageGallery(URL_CONNECT_GALLERY, 1);
+        viewGallery.notifyDataSetChanged();
 
 
     }
 
 
-    private void gridview(String url_connect_gallery) {
-        gridView.setVisibility(View.VISIBLE);
-        listView.setVisibility(View.GONE);
+    private void DanhSach(String url_connect_gallery) {
         img_lietke.setEnabled(true);
         img_danhsach.setEnabled(false);
         img_lietke.setImageResource(R.drawable.ic_format_list_bulleted_black_40dp);
         img_danhsach.setImageResource(R.drawable.ic_apps_blue_40dp);
-        arrayList = new ArrayList<>();
-        adapterGridview = new GalleryAdapterGridview(getContext(),arrayList);
-        gridView.setAdapter(adapterGridview);
-        adapterGridview.notifyDataSetChanged();
-        getJsonImageGallery(url_connect_gallery,2);
-
-
+        list.clear();
+        getJsonImageGallery(URL_CONNECT_GALLERY, 3);
+        viewGallery.notifyDataSetChanged();
     }
 
     private void getJsonImageGallery(String url_connect_gallery, final int so) {
@@ -134,17 +155,25 @@ public class Gallery extends Fragment implements View.OnClickListener {
                         try {
                             progressDialog.dismiss();
                             JSONArray jsonArray = response.getJSONArray("data");
-                            for (int i = 0; i <jsonArray.length();i++){
-                                String images = jsonArray.getString(i);
-                                LinkImages = URL_CONNECT_GALLERY_IMAGES + images;
-                                arrayList.add(new GalleryContructor(LinkImages));
+                            for (int i = 0; i < jsonArray.length(); i++) {
+                                imagesCode = jsonArray.getString(i);
+                                LinkImages = URL_CONNECT_GALLERY_IMAGES + imagesCode;
+                                list.add(LinkImages);
                             }
-                            if(so == 1){
-                                adapterListview.notifyDataSetChanged();
+                            viewGallery.setImages(list);
+                            if (so == 1) {
+                                viewGallery.setSpanCount(1);
+                                viewGallery.setImageSize(ViewGroup.LayoutParams.MATCH_PARENT,300);
+                                viewGallery.setPlaceHolder(R.drawable.media_gallery_placeholder);
+                                viewGallery.setOrientation(MediaGalleryView.VERTICAL);
                             }
-                            if (so ==2) {
-                                adapterGridview.notifyDataSetChanged();
+                            else if (so == 3) {
+                                viewGallery.setSpanCount(3);
+                                viewGallery.setImageSize(300,300);
+                                viewGallery.setPlaceHolder(R.drawable.media_gallery_placeholder);
+                                viewGallery.setOrientation(MediaGalleryView.VERTICAL);
                             }
+                            viewGallery.notifyDataSetChanged();
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -152,15 +181,15 @@ public class Gallery extends Fragment implements View.OnClickListener {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getContext(), ""+error.toString(), Toast.LENGTH_SHORT).show();
-                Log.d("Error",""+error.toString());
+                Toast.makeText(getContext(), "" + error.toString(), Toast.LENGTH_SHORT).show();
+                Log.d("Error", "" + error.toString());
             }
-        }){
+        }) {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
-                Map<String,String> stringMap = new HashMap<>();
-                BaseActivity.token  = BaseActivity.dataLogin.getString("usertoken","");
-                stringMap.put("Authorization",BaseActivity.token);
+                Map<String, String> stringMap = new HashMap<>();
+                BaseActivity.token = BaseActivity.dataLogin.getString("usertoken", "");
+                stringMap.put("Authorization", BaseActivity.token);
                 return stringMap;
             }
         };
@@ -173,30 +202,36 @@ public class Gallery extends Fragment implements View.OnClickListener {
         edtCategory = view.findViewById(R.id.ext_Category_Gallery);
         edtSearch = view.findViewById(R.id.ext_Search_Gallery);
         btnUpload = view.findViewById(R.id.btn_UploadGallery);
-        listView = view.findViewById(R.id.lst_gallery);
-        gridView = view.findViewById(R.id.grd_gallery);
+        simpleViewFlipper = (ViewFlipper) view.findViewById(R.id.pager);
+        viewGallery = (MediaGalleryView) view.findViewById(R.id.gallery);
+
+        // Pager listener over indicator
+
     }
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.img_danhsach_gallery:
-                arrayList.clear();
-                gridview(URL_CONNECT_GALLERY);
-                adapterGridview.notifyDataSetChanged();
+                list.clear();
+                DanhSach(URL_CONNECT_GALLERY);
                 break;
             case R.id.img_lietke_gallery:
-                arrayList.clear();
-                listview(URL_CONNECT_GALLERY);
-                adapterListview.notifyDataSetChanged();
+                list.clear();
+                Lietke(URL_CONNECT_GALLERY);
                 break;
             case R.id.btn_UploadGallery:
 
                 break;
+
         }
     }
+
+
+
+
     private void intentView(Class c) {
-        Intent intent = new Intent(getActivity(),c );
+        Intent intent = new Intent(getActivity(), c);
         startActivity(intent);
         getActivity().finish();
     }
