@@ -56,30 +56,11 @@ public class SignIn extends BaseActivity implements View.OnClickListener {
     BroadcastReceiver broadcastReceiver;
     String Site = "";
     String Url = "";
+    String URL_SIGNIN = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
-//        final Dialog dialog = new Dialog(this);
-//        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-//        dialog.setContentView(R.layout.custom_dialog_connect_internet);
-//        dialog.setCancelable(false);
-//        Button button = dialog.findViewById(R.id.btn_connect_internet);
-//        button.setOnClickListener(this);
-//        broadcastReceiver = new BroadcastReceiver() {
-//            @Override
-//            public void onReceive(Context context, Intent intent) {
-//                if (new NetworkStateMonitor().checkInterNet(context)){
-//                    dialog.dismiss();
-//                    dialog.cancel();
-//                    Toast.makeText(context, "Connected internet", Toast.LENGTH_SHORT).show();
-//                } else {
-//                    Toast.makeText(context, "Vui long kiem tra ket noi inter net",
-//                            Toast.LENGTH_SHORT).show();
-//                    dialog.show();
-//                }
-//            }
-//        };
         initView();
         initData();
         initEventButton();
@@ -110,8 +91,10 @@ public class SignIn extends BaseActivity implements View.OnClickListener {
         editor = dataLogin.edit();
         Site = dataLogin.getString("SITESignIn","Your site");
         Url = dataLogin.getString("URLSignIn","Select to cotinue");
+        URL_SIGNIN = ApiConnect.URL_SIGNIN(Url);
         txt_your_site_signIn.setText(Site);
         txt_select_signIn.setText(Url);
+
     }
 
     private void initEventButton() {
@@ -124,14 +107,13 @@ public class SignIn extends BaseActivity implements View.OnClickListener {
         int id = v.getId();
         switch (id) {
             case R.id.btn_signIn:
-                SingIn();
+                SingIn(URL_SIGNIN);
                 break;
             case R.id.layout_your_site:
                 intentView(MySiteActivity.class);
                 //add website url
                 break;
             case R.id.btn_connect_internet:
-//                startActivityForResult(new Intent(Settings.ACTION_SETTINGS) , 0);
                 break;
             default:
                 break;
@@ -144,17 +126,18 @@ public class SignIn extends BaseActivity implements View.OnClickListener {
         finish();
     }
 
-    private void SingIn(){
+    private void SingIn(String URL_SIGNIN){
         setContentDialog("Sign in", "Please wait...");
         useremail = edt_user_signIn.getText().toString().trim();
         userpassword = edt_password_signIn.getText().toString().trim();
         RequestQueue requestSignIn = Volley.newRequestQueue(this);
-        StringRequest signInRequest = new StringRequest(Request.Method.POST, ApiConnect.URL_SIGNIN, new Response.Listener<String>() {
+        StringRequest signInRequest = new StringRequest(Request.Method.POST, URL_SIGNIN, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 progressDialog.dismiss();
                 Log.d("SUCCESS_SIGNIN", response + "");
                 try {
+                    editor = dataLogin.edit();
                     JSONObject jsonObject = new JSONObject(response);
                     editor.putString("useremail", useremail);
                     editor.putString("userpassword", userpassword);
@@ -175,7 +158,7 @@ public class SignIn extends BaseActivity implements View.OnClickListener {
             public void onErrorResponse(VolleyError error) {
                 progressDialog.dismiss();
                 Log.d("ERROR_SIGNIN", error + "");
-                Toast.makeText(SignIn.this, "Vui lòng nhập đúng email và password", Toast.LENGTH_SHORT).show();
+                Toast.makeText(SignIn.this, "Vui lòng nhập đúng email và password \n Hoặc URL bạn không đúng", Toast.LENGTH_SHORT).show();
             }
         }){
             @Override

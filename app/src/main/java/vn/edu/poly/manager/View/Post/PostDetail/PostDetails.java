@@ -79,11 +79,11 @@ public class PostDetails extends BaseActivity implements View.OnClickListener {
             BaseActivity.editor = BaseActivity.dataLogin.edit();
             Site = BaseActivity.dataLogin.getString("SITESignIn","");
             Url = BaseActivity.dataLogin.getString("URLSignIn","");
-            URL_CONNECT_AVATAR = ApiConnect.URL_CONNECT_AVATAR(Site,Url);
-            URL_CONNECT_DRAFF_PENDING = ApiConnect.URL_CONNECT_DRAFF_PENDING(Site,Url);
-            URL_CONNECT_PENDING_PUBLIC = ApiConnect.URL_CONNECT_PENDING_PUBLIC(Site,Url);
+            URL_CONNECT_AVATAR = ApiConnect.URL_CONNECT_AVATAR(Url);
+            URL_CONNECT_DRAFF_PENDING = ApiConnect.URL_CONNECT_DRAFF_PENDING(Url);
+            URL_CONNECT_PENDING_PUBLIC = ApiConnect.URL_CONNECT_PENDING_PUBLIC(Url);
             id = dataLogin.getString("id","");
-            Link = ApiConnect.URL_CONNECT_DETAILS(id,Site,Url);
+            Link = ApiConnect.URL_CONNECT_DETAILS(id,Url);
             getJson(Link);
 
 

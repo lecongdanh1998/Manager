@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".View.Help.Help">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="@dimen/dimens_margin"
+        android:layout_marginRight="@dimen/dimens_margin"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center"
+            android:src="@drawable/logo_nks" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/roboto_bold"
+            android:text="@string/nks_email"
+            android:textColor="@color/color_black"
+            android:textSize="@dimen/textLager" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/margin_5dp"
+            android:fontFamily="@font/roboto_bold"
+            android:text="@string/nks_phone"
+            android:textColor="@color/color_black"
+            android:textSize="@dimen/textLager" />
+
+        <Button
+            android:id="@+id/btn_infor_company"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/marginTop_help"
+            android:background="@color/colorPrimary"
+            android:fontFamily="@font/roboto_medium"
+            android:text="@string/infor_company"
+            android:textAllCaps="false"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/textLager" />
+
+        <Button
+            android:id="@+id/btn_tiket_company"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimens_margin"
+            android:background="@color/colorPrimary"
+            android:fontFamily="@font/roboto_medium"
+            android:text="@string/infor_tiket"
+            android:textAllCaps="false"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/textLager" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/txt_copy_help"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/copyright"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/dimens_margin"
+        android:fontFamily="@font/roboto_medium"
+        android:textColor="@color/color_black"
+        android:textSize="@dimen/textMedium" />
+</RelativeLayout>

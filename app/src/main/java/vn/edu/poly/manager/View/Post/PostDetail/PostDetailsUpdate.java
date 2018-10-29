@@ -70,7 +70,7 @@ public class PostDetailsUpdate extends BaseActivity implements View.OnClickListe
         Site = BaseActivity.dataLogin.getString("SITESignIn","");
         Url = BaseActivity.dataLogin.getString("URLSignIn","");
         id = dataLogin.getString("id","");
-        URL_CONNECT_WEBSITE = ApiConnect.URL_CONNECT_DETAILS(id,Site,Url);
+        URL_CONNECT_WEBSITE = ApiConnect.URL_CONNECT_DETAILS(id,Url);
         getJson(URL_CONNECT_WEBSITE);
 
 
@@ -147,7 +147,7 @@ public class PostDetailsUpdate extends BaseActivity implements View.OnClickListe
                 case R.id.btn_browse_PostDetailsUpdate:
                     String title = edt_title.getText().toString().trim();
                     String content = edt_content.getText().toString().trim();
-                    URL_CONNECT_UPDATE = ApiConnect.URL_CONNECT_UPDATE(Site,Url);
+                    URL_CONNECT_UPDATE = ApiConnect.URL_CONNECT_UPDATE(Url);
                     getJsonUpdate(URL_CONNECT_UPDATE,title,content);
                     break;
             }

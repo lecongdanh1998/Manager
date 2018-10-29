@@ -106,7 +106,7 @@
                     android:cursorVisible="true"
                     android:fontFamily="@font/roboto_medium"
                     android:hint="nks@gmail.com"
-                    android:inputType="textPassword"
+                    android:inputType="text"
                     android:paddingTop="@dimen/padding_edt_form_signIn"
                     android:paddingBottom="@dimen/padding_edt_form_signIn"
                     android:textColor="@color/colorBlack"
@@ -115,20 +115,19 @@
                     android:textSize="@dimen/textMedium" />
             </LinearLayout>
 
-            <Button
-                android:id="@+id/btn_create_AddMySite"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/layout_form_singIn"
-                android:layout_marginLeft="@dimen/margin_form_signIn"
-                android:layout_marginTop="@dimen/marginTop_font_signIn"
-                android:layout_marginRight="@dimen/margin_form_signIn"
-                android:background="@drawable/custom_button"
-                android:fontFamily="@font/roboto_medium"
-                android:text="@string/Str_btnCreateMySite"
-                android:textAllCaps="false"
-                android:textColor="@color/colorWhite"
-                android:textSize="@dimen/textMedium" />
+
         </RelativeLayout>
+
     </ScrollView>
+    <Button
+        android:layout_alignParentBottom="true"
+        android:id="@+id/btn_create_AddMySite"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimens_heigth_btnAdd"
+        android:background="@color/color_btnAdd"
+        android:fontFamily="@font/roboto_medium"
+        android:text="@string/Str_btnCreateMySite"
+        android:textAllCaps="false"
+        android:textColor="@color/colorWhite"
+        android:textSize="@dimen/textMedium" />
 </RelativeLayout>

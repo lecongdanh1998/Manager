@@ -25,11 +25,19 @@
     <string name="oke">OKE</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name = "btnDraff">Draff</string>
-    <string name = "btnPending">Pending</string>
-    <string name = "btnPublic">Public</string>
+    <string name="btnDraff">Draff</string>
+    <string name="btnPending">Pending</string>
+    <string name="btnPublic">Public</string>
     <string name="overview">Overview</string>
     <string name="txtMyGallery">MY GALLERY</string>
     <string name="txtCategoryMyGallery">Select Category</string>
     <string name="txtSearchMyGallery">Search Image</string>
+    <string name="btn_save">Save</string>
+    <string name="btn_cancel">Cancel</string>
+    <string name="nks_email">infor@nks.com.vn</string>
+    <string name="nks_phone">0931 877 866</string>
+    <string name="infor_company">NKS Head Office</string>
+    <string name="infor_tiket">Ticket</string>
+    <string name="copyright">Copyright @ 2018 - Power by NKS</string>
+    <string name="nks_website">ww.nks.com.vs</string>
 </resources>

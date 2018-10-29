@@ -66,8 +66,8 @@ public class MySiteAddSiteActivity extends BaseActivity implements View.OnClickL
         progressDialog.show();
         Site = extAddSite.getText().toString().trim();
         Url = extAddURL.getText().toString().trim();
-        editor.putString("SITE","demo");
-        editor.putString("URL","vnlead.webstarterz.com");
+        editor.putString("SITE",Site);
+        editor.putString("URL",Url);
         editor.commit();
         int errorCode = 0;
 

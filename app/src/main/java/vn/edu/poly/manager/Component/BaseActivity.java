@@ -11,14 +11,22 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.support.annotation.ColorRes;
+import android.support.annotation.DrawableRes;
+
 import android.support.v4.app.ActivityCompat;
+
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
+import vn.edu.poly.manager.Model.GalleryContructor;
 import vn.edu.poly.manager.Networking.NetworkStateMonitor;
 import vn.edu.poly.manager.R;
 
@@ -46,7 +54,6 @@ public abstract class BaseActivity extends AppCompatActivity{
     public static SharedPreferences dataLogin;
     public static SharedPreferences.Editor editor;
     private final int MY_PERMISSIONS_REQUEST_INTERNET = 10;
-
     BroadcastReceiver broadcastReceiver;
 
     @Override
@@ -71,10 +78,7 @@ public abstract class BaseActivity extends AppCompatActivity{
                 if (new NetworkStateMonitor().checkInterNet(context)){
                     dialog.dismiss();
                     dialog.cancel();
-                    Toast.makeText(context, "Connected internet", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(context, "Vui long kiem tra ket noi inter net",
-                            Toast.LENGTH_SHORT).show();
                     dialog.show();
                 }
             }
@@ -141,6 +145,11 @@ public abstract class BaseActivity extends AppCompatActivity{
     @Override
     protected void onPause() {
         super.onPause();
-        unregisterReceiver(broadcastReceiver);
+        try{
+            unregisterReceiver(broadcastReceiver);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
     }
 }

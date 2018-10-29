@@ -1,5 +1,7 @@
 package vn.edu.poly.manager.View;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
@@ -11,6 +13,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,10 +21,23 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import vn.edu.poly.manager.Adapter.MenuAdapter;
 import vn.edu.poly.manager.Component.BaseActivity;
@@ -30,7 +46,10 @@ import vn.edu.poly.manager.R;
 import vn.edu.poly.manager.View.Contact.Contact;
 import vn.edu.poly.manager.View.Dashboard.Dashboard;
 import vn.edu.poly.manager.View.Gallery.Gallery;
+import vn.edu.poly.manager.View.Help.Help;
 import vn.edu.poly.manager.View.Post.Post;
+import vn.edu.poly.manager.View.Post.PostDetail.PostDetails;
+import vn.edu.poly.manager.View.Setting.Setting;
 
 public class MainActivity extends BaseActivity implements AdapterView.OnItemClickListener, View.OnClickListener {
 
@@ -45,6 +64,7 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
     private SharedPreferences.Editor editor;
     private ImageView img_back_MysiteToobar;
     private ImageView btn_cancel;
+    private RelativeLayout btn_setting,btn_logout_main;
     private ImageView img_find_MysiteToobar;
     String screen;
     @Override
@@ -57,10 +77,12 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
         try {
             Intent intent = getIntent();
             screen = intent.getStringExtra("screen");
-            Toast.makeText(this, "" + screen, Toast.LENGTH_SHORT).show();
             if (screen.equalsIgnoreCase("post")){
                 transactionFrangment(new Post(), "Post");
-            }else {
+            } else if (screen.equalsIgnoreCase("help")){
+                transactionFrangment(new Help(), "Help");
+            }
+            else {
                 transactionFrangment(new Dashboard(), "Dashboard");
             }
         } catch (Exception e){
@@ -81,7 +103,8 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
         img_back_MysiteToobar = findViewById(R.id.img_back_MysiteToobar);
         img_find_MysiteToobar = findViewById(R.id.img_find_MysiteToobar);
         img_back_MysiteToobar.setImageResource(R.drawable.ic_menu_white);
-        btn_cancel = findViewById(R.id.btn_cancel);
+        btn_setting = findViewById(R.id.btn_setting_main);
+        btn_logout_main = findViewById(R.id.btn_logout_main);
     }
 
     /*
@@ -92,8 +115,9 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
     private void initEventButton() {
         listview_menu.setOnItemClickListener(this);
         img_back_MysiteToobar.setOnClickListener(this);
-        btn_cancel.setOnClickListener(this);
+        btn_setting.setOnClickListener(this);
         img_find_MysiteToobar.setOnClickListener(this);
+        btn_logout_main.setOnClickListener(this);
     }
 
     /*
@@ -111,6 +135,7 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
         menuModelArrayList.add(new MenuModel("Post"));
         menuModelArrayList.add(new MenuModel("Gallery"));
         menuModelArrayList.add(new MenuModel("Contact"));
+        menuModelArrayList.add(new MenuModel("Help"));
         /*
          * create menu adapter
          * */
@@ -154,13 +179,15 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
                 break;
             case 3:
                 fragment = new Gallery();
-                transactionFrangment(fragment, "Gallery");
+                transactionFrangment(fragment, "My Gallery");
                 break;
             case 4:
                 fragment = new Contact();
                 transactionFrangment(fragment, "Contact");
                 break;
             case 5:
+                fragment = new Help();
+                transactionFrangment(fragment, "Help");
                 break;
             case 7:
                 break;
@@ -174,7 +201,7 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
      * */
     public void transactionFrangment(Fragment f, String s) {
         getSupportFragmentManager().beginTransaction().replace(R.id.content_frame,
-                f).commit();
+                f, s).commit();
         toolbar_title.setText(s);
         drawer_layout.closeDrawers();
     }
@@ -192,12 +219,45 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
             case R.id.img_back_MysiteToobar:
                 drawer_layout.openDrawer(GravityCompat.START);
                 break;
-            case R.id.btn_cancel:
-                drawer_layout.closeDrawers();
+            case R.id.btn_setting_main:
+                transactionFrangment(new Setting(), "Setting");
                 break;
             case R.id.img_find_MysiteToobar:
-
+                break;
+            case R.id.btn_logout_main:
+                alertLogout();
                 break;
         }
     }
+
+    private void alertLogout() {
+        AlertDialog.Builder alertDialog2 = new AlertDialog.Builder(
+                MainActivity.this);
+        alertDialog2.setTitle("Đăng xuất...");
+        alertDialog2.setMessage("Bạn có chắc chắn muốn đăng xuất không?");
+        alertDialog2.setIcon(R.drawable.exit);
+        alertDialog2.setPositiveButton("Có",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        BaseActivity.editor = BaseActivity.dataLogin.edit();
+                        BaseActivity.editor.putString("useremail", "");
+                        BaseActivity.editor.putString("userpassword", "");
+                        BaseActivity.editor.commit();
+                        intentView(SignIn.class);
+                    }
+                });
+        alertDialog2.setNegativeButton("Không",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+        alertDialog2.show();
+    }
+    private void intentView(Class c) {
+        Intent intent = new Intent(MainActivity.this,c );
+        startActivity(intent);
+        finish();
+    }
+
 }
