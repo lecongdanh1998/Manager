@@ -37,6 +37,7 @@ import java.util.StringTokenizer;
 
 import vn.edu.poly.manager.Adapter.ContactAdapter;
 import vn.edu.poly.manager.Component.BaseActivity;
+import vn.edu.poly.manager.Component.ProgressDialogWait;
 import vn.edu.poly.manager.Model.ContactsModel;
 import vn.edu.poly.manager.R;
 import vn.edu.poly.manager.Server.ApiConnect;
@@ -60,7 +61,7 @@ public class Contact extends Fragment implements View.OnClickListener, AdapterVi
     private String status;
     private String create_at;
     ArrayList<ContactsModel> list;
-
+//    ProgressDialogWait progressDialogWait;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -79,6 +80,8 @@ public class Contact extends Fragment implements View.OnClickListener, AdapterVi
         btn_pending_contact.setOnClickListener(this);
         btn_done_contact = view.findViewById(R.id.btn_done_contact);
         btn_done_contact.setOnClickListener(this);
+//        progressDialogWait = new ProgressDialogWait();
+//        progressDialogWait.show(getFragmentManager(), "dialogWait");
     }
 
     private void initData() {
@@ -170,10 +173,8 @@ public class Contact extends Fragment implements View.OnClickListener, AdapterVi
     private void btnPending() {
         btn_pending_contact.setEnabled(false);
         btn_done_contact.setEnabled(true);
-        btn_pending_contact.setBackground(getResources().getDrawable(R.drawable.custom_background_button_tab));
-        btn_pending_contact.setTextColor(getResources().getColor(R.color.colorPrimary));
+        btn_pending_contact.setBackground(getActivity().getDrawable(R.drawable.custom_background_button_tab));
         btn_done_contact.setBackgroundColor(getResources().getColor(R.color.colorWhite));
-        btn_done_contact.setTextColor(getResources().getColor(R.color.colorPrimary));
 
     }
 
@@ -181,9 +182,7 @@ public class Contact extends Fragment implements View.OnClickListener, AdapterVi
         btn_pending_contact.setEnabled(true);
         btn_done_contact.setEnabled(false);
         btn_pending_contact.setBackgroundColor(getResources().getColor(R.color.colorWhite));
-        btn_pending_contact.setTextColor(getResources().getColor(R.color.colorPrimary));
-        btn_done_contact.setBackground(getResources().getDrawable(R.drawable.custom_background_button_tab));
-        btn_done_contact.setTextColor(getResources().getColor(R.color.colorPrimary));
+        btn_done_contact.setBackground(getActivity().getDrawable(R.drawable.custom_background_button_tab));
     }
 
     @Override

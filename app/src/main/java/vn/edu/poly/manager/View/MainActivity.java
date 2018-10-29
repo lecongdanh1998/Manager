@@ -120,7 +120,7 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
         /*
          * create menu adapter
          * */
-        menuAdapter = new MenuAdapter(this, menuModelArrayList, R.layout.row_menu);
+        menuAdapter = new MenuAdapter(this, menuModelArrayList, "3");
         listview_menu.setAdapter(menuAdapter);
     }
 
@@ -153,6 +153,7 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
                 transactionFrangment(fragment, "Dashboard");
                 break;
             case 1:
+                //Notifications
                 break;
             case 2:
                 fragment = new Post();
@@ -205,5 +206,15 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
             case R.id.img_find_MysiteToobar:
                 break;
         }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
     }
 }

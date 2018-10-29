@@ -1,57 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_margin="15dp"
-    android:paddingBottom="15dp"
     android:paddingTop="15dp"
-    >
+    android:paddingBottom="15dp">
+
     <ImageView
         android:id="@+id/img_title_post"
         android:layout_width="match_parent"
-        android:layout_height="150dp" />
+        android:layout_height="200dp" />
+
     <TextView
-        android:paddingLeft="10dp"
-        android:text="Hướng dẫn sử dụng website"
-        android:textColor="#000000"
-        android:textStyle="bold"
-        android:paddingRight="10dp"
-        android:layout_alignParentLeft="true"
-        android:layout_toLeftOf="@id/img_logo"
-        android:textSize="16sp"
-        android:lines="1"
-        android:ellipsize="end"
-        android:layout_marginTop="5dp"
         android:id="@+id/txt_title_post"
-        android:layout_below="@id/img_title_post"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-    <TextView
+        android:layout_height="wrap_content"
+        android:layout_below="@id/img_title_post"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="5dp"
+        android:layout_toLeftOf="@id/img_logo"
+        android:ellipsize="end"
+        android:fontFamily="@font/roboto_medium"
+        android:lines="1"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        android:layout_alignParentLeft="true"
-        android:lines="1"
-        android:ellipsize="end"
-        android:layout_toLeftOf="@id/img_logo"
-        android:layout_marginTop="5dp"
-        android:text="15:00 18/08/2018"
-        android:textSize="14sp"
+        android:text="Giao dien he thong"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/textMedium" />
+
+    <TextView
         android:id="@+id/txt_time_post"
-        android:layout_below="@id/txt_title_post"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:layout_marginRight="10dp"
-        android:layout_alignParentRight="true"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txt_title_post"
+        android:layout_alignParentLeft="true"
         android:layout_marginTop="5dp"
-        android:layout_centerInParent="true"
-        android:layout_below="@+id/img_title_post"
+        android:layout_toLeftOf="@id/img_logo"
+        android:ellipsize="end"
+        android:fontFamily="@font/roboto_regular"
+        android:lines="1"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text="20:40"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/textSmall" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/img_logo"
         android:layout_width="40dp"
         android:layout_height="40dp"
+        android:layout_below="@+id/img_title_post"
+        android:layout_alignParentRight="true"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="10dp"
         android:src="@drawable/logo_nks"
-        app:civ_border_width="2dp"
         app:civ_border_color="#ffffff"
-        />
+        app:civ_border_width="2dp" />
 </RelativeLayout>

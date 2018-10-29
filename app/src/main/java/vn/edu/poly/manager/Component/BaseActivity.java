@@ -9,14 +9,18 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import vn.edu.poly.manager.Networking.NetworkStateMonitor;
@@ -47,31 +51,37 @@ public abstract class BaseActivity extends AppCompatActivity{
     public static SharedPreferences.Editor editor;
     private final int MY_PERMISSIONS_REQUEST_INTERNET = 10;
     BroadcastReceiver broadcastReceiver;
+    public Snackbar snackbar;
+    View view;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        view = getWindow().getDecorView().getRootView();
         checkInternetPermission(this);
         dataLogin  = getSharedPreferences("data_login", MODE_PRIVATE);
-        final Dialog dialog = new Dialog(this);
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setContentView(R.layout.custom_dialog_connect_internet);
-        dialog.setCancelable(false);
-        Button button = dialog.findViewById(R.id.btn_connect_internet);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivityForResult(new Intent(Settings.ACTION_SETTINGS) , 0);
-            }
-        });
+        snackbar = Snackbar.make(view, "Not connect internet", Snackbar.LENGTH_INDEFINITE)
+                .setAction("Setting", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        startActivityForResult(new Intent(android.provider.Settings.ACTION_SETTINGS), 0);
+                    }
+                })
+                .setActionTextColor(Color.RED);
+        View viewSnackBar = snackbar.getView();
+        TextView txt_snack = viewSnackBar.findViewById(android.support.design.R.id.snackbar_text);
+        TextView txt_snack_action = viewSnackBar.findViewById(android.support.design.R.id.snackbar_action);
+        txt_snack.setTypeface(Typeface.createFromAsset(getAssets(),
+                "roboto_regular.ttf"));
+        txt_snack_action.setTypeface(Typeface.createFromAsset(getAssets(),
+                "roboto_regular.ttf"));
         broadcastReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
                 if (new NetworkStateMonitor().checkInterNet(context)){
-                    dialog.dismiss();
-                    dialog.cancel();
+                    snackbar.dismiss();
                 } else {
-                    dialog.show();
+                    snackbar.show();
                 }
             }
         };

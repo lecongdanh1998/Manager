@@ -26,6 +26,8 @@
                 android:background="@android:color/transparent"
                 android:fontFamily="@font/roboto_medium"
                 android:text="Pending"
+                android:textAllCaps="false"
+                android:textColor="@color/colorPrimary"
                 android:textSize="@dimen/textMedium" />
         </RelativeLayout>
 
@@ -42,9 +44,12 @@
                 android:background="@android:color/transparent"
                 android:fontFamily="@font/roboto_medium"
                 android:text="Done"
+                android:textAllCaps="false"
+                android:textColor="@color/colorPrimary"
                 android:textSize="@dimen/textMedium" />
         </RelativeLayout>
     </LinearLayout>
+
     <ListView
         android:id="@+id/listView_contact"
         android:layout_width="match_parent"

@@ -62,7 +62,7 @@ public class POSTAdapter extends BaseAdapter {
         viewHolder.txtTime.setText(contructor.getTxt_Time());
         Picasso.get()
                 .load(contructor.getImg_title())
-                .resize(350,150)
+                .resize(350,200)
                 .placeholder(R.drawable.ic_launcher_background)
                 .error(R.drawable.ic_launcher_background)
                 .into(viewHolder.imgTitle);
