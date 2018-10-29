@@ -82,8 +82,8 @@ public class Post extends Fragment implements View.OnClickListener {
         BaseActivity.editor = BaseActivity.dataLogin.edit();
         Site = BaseActivity.dataLogin.getString("SITESignIn","");
         Url = BaseActivity.dataLogin.getString("URLSignIn","");
-        URL_CONNECT_WEBSITE = ApiConnect.URL_CONNECT_WEBSITE(Site,Url);
-        URL_CONNECT_AVATAR = ApiConnect.URL_CONNECT_AVATAR(Site,Url);
+        URL_CONNECT_WEBSITE = ApiConnect.URL_CONNECT_WEBSITE(Url);
+        URL_CONNECT_AVATAR = ApiConnect.URL_CONNECT_AVATAR(Url);
         btnDraff.setOnClickListener(this);
         btnPending.setOnClickListener(this);
         btnPublic.setOnClickListener(this);

@@ -112,7 +112,7 @@ public class ContactDetails extends AppCompatActivity {
         BaseActivity.editor = BaseActivity.dataLogin.edit();
         Site = BaseActivity.dataLogin.getString("SITESignIn", "");
         Url = BaseActivity.dataLogin.getString("URLSignIn", "");
-        URL_CONNECT_WEBSITE = ApiConnect.URL_GET_POST_CONTACT_DETAIL(Site, Url, id);
+        URL_CONNECT_WEBSITE = ApiConnect.URL_GET_POST_CONTACT_DETAIL(Url, id);
         initData(URL_CONNECT_WEBSITE);
     }
 }

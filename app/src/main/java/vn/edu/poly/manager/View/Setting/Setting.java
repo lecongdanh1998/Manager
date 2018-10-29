@@ -82,7 +82,7 @@ public class Setting extends Fragment implements AdapterView.OnItemClickListener
         BaseActivity.editor = BaseActivity.dataLogin.edit();
         Site = BaseActivity.dataLogin.getString("SITESignIn", "");
         Url = BaseActivity.dataLogin.getString("URLSignIn", "");
-        URL_CONNECT_WEBSITE = ApiConnect.URL_GET_SETTING(Site, Url);
+        URL_CONNECT_WEBSITE = ApiConnect.URL_GET_SETTING(Url);
         getDataSetting(URL_CONNECT_WEBSITE);
         settingAdapter.notifyDataSetChanged();
     }

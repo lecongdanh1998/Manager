@@ -77,14 +77,14 @@ public class MySiteActivity extends BaseActivity implements View.OnClickListener
         Intent intent;
         switch (v.getId()){
             case R.id.btn_addSite_MySite:
-                intent = new Intent(MySiteActivity.this,MySiteAddSiteActivity.class);
-                startActivity(intent);
+                intentView(MySiteAddSiteActivity.class);
                 break;
         }
     }
 
     @Override
     public void onBackPressed() {
+        finish();
         super.onBackPressed();
     }
 }

@@ -106,7 +106,7 @@ public class DialogFragmentSetting extends DialogFragment implements View.OnClic
         BaseActivity.editor = BaseActivity.dataLogin.edit();
         Site = BaseActivity.dataLogin.getString("SITESignIn", "");
         Url = BaseActivity.dataLogin.getString("URLSignIn", "");
-        URL_CONNECT_WEBSITE = ApiConnect.URL_UPDATE_SETTING(Site, Url);
+        URL_CONNECT_WEBSITE = ApiConnect.URL_UPDATE_SETTING(Url);
         initData(URL_CONNECT_WEBSITE);
     }
 
