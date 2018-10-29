@@ -45,6 +45,8 @@ import vn.edu.poly.manager.Model.MenuModel;
 import vn.edu.poly.manager.R;
 import vn.edu.poly.manager.View.Contact.Contact;
 import vn.edu.poly.manager.View.Dashboard.Dashboard;
+import vn.edu.poly.manager.View.Gallery.Gallery;
+import vn.edu.poly.manager.View.Help.Help;
 import vn.edu.poly.manager.View.Post.Post;
 import vn.edu.poly.manager.View.Post.PostDetail.PostDetails;
 import vn.edu.poly.manager.View.Setting.Setting;
@@ -133,6 +135,7 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
         menuModelArrayList.add(new MenuModel("Post"));
         menuModelArrayList.add(new MenuModel("Gallery"));
         menuModelArrayList.add(new MenuModel("Contact"));
+        menuModelArrayList.add(new MenuModel("Help"));
         /*
          * create menu adapter
          * */

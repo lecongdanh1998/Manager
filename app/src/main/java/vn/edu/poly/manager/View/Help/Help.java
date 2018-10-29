@@ -46,5 +46,6 @@ public class Help extends Fragment implements View.OnClickListener {
     private void intentActivity(Class cl){
         Intent intent = new Intent(getContext(), cl);
         startActivity(intent);
+        getActivity().finish();
     }
 }

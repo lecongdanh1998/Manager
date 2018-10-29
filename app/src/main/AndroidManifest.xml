@@ -43,6 +43,9 @@
         </receiver>
 
         <activity android:name=".View.Contact.ContactDetails.ContactDetails"></activity>
+        <activity android:name=".View.Help.HelpDetais.NKSHeader"></activity>
+        <activity android:name=".View.Help.HelpDetais.SendHelp"></activity>
+        <activity android:name=".View.Help.HelpDetais.RequestHelp"></activity>
     </application>
 
 </manifest>
