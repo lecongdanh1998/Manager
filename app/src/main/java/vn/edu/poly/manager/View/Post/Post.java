@@ -51,7 +51,7 @@ public class Post extends Fragment implements View.OnClickListener {
     String URL_CONNECT_WEBSITE = "";
     String URL_CONNECT_AVATAR = "";
     ListView lstPost;
-    Button btnDraff, btnPending, btnPublic;
+    Button btnDraff,btnPending,btnPublic;
     private ProgressDialog progressDialog;
     String TrangThai = "";
     String Site = "";
@@ -75,10 +75,10 @@ public class Post extends Fragment implements View.OnClickListener {
         
         progressDialog = new ProgressDialog(getContext());
         BaseActivity.editor = BaseActivity.dataLogin.edit();
-        Site = BaseActivity.dataLogin.getString("SITESignIn", "");
-        Url = BaseActivity.dataLogin.getString("URLSignIn", "");
-        URL_CONNECT_WEBSITE = ApiConnect.URL_CONNECT_WEBSITE(Site, Url);
-        URL_CONNECT_AVATAR = ApiConnect.URL_CONNECT_AVATAR(Site, Url);
+        Site = BaseActivity.dataLogin.getString("SITESignIn","");
+        Url = BaseActivity.dataLogin.getString("URLSignIn","");
+        URL_CONNECT_WEBSITE = ApiConnect.URL_CONNECT_WEBSITE(Url);
+        URL_CONNECT_AVATAR = ApiConnect.URL_CONNECT_AVATAR(Url);
         btnDraff.setOnClickListener(this);
         btnPending.setOnClickListener(this);
         btnPublic.setOnClickListener(this);

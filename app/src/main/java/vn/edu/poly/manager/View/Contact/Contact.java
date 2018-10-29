@@ -162,7 +162,7 @@ public class Contact extends Fragment implements View.OnClickListener, AdapterVi
         BaseActivity.editor = BaseActivity.dataLogin.edit();
         Site = BaseActivity.dataLogin.getString("SITESignIn", "");
         Url = BaseActivity.dataLogin.getString("URLSignIn", "");
-        URL_CONNECT_WEBSITE = ApiConnect.URL_GET_POST_CONTACT(Site, Url);
+        URL_CONNECT_WEBSITE = ApiConnect.URL_GET_POST_CONTACT(Url);
         getDataContact(URL_CONNECT_WEBSITE, status);
         contactAdapter.notifyDataSetChanged();
     }

@@ -95,8 +95,8 @@ public class Gallery extends Fragment implements View.OnClickListener {
         BaseActivity.editor = BaseActivity.dataLogin.edit();
         Site = BaseActivity.dataLogin.getString("SITESignIn", "");
         Url = BaseActivity.dataLogin.getString("URLSignIn", "");
-        URL_CONNECT_GALLERY = ApiConnect.URL_CONNECT_GALLERYS(Site, Url);
-        URL_CONNECT_GALLERY_IMAGES = ApiConnect.URL_CONNECT_GALLERYS_IMAGES(Site, Url);
+        URL_CONNECT_GALLERY = ApiConnect.URL_CONNECT_GALLERYS(Url);
+        URL_CONNECT_GALLERY_IMAGES = ApiConnect.URL_CONNECT_GALLERYS_IMAGES(Url);
         list = new ArrayList<>();
         Lietke(URL_CONNECT_GALLERY);
 
