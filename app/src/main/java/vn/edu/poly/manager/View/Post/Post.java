@@ -106,6 +106,8 @@ public class Post extends Fragment implements View.OnClickListener {
         }
 
 
+
+
         lstPost.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -186,6 +188,9 @@ public class Post extends Fragment implements View.OnClickListener {
         btnPending.setBackgroundColor(getResources().getColor(R.color.colorWhite));
         btnPublic.setBackground(getActivity().getDrawable(R.drawable.custom_background_button_tab));
     }
+
+
+
 
     private void getJson(String url, final String TrangThai) {
         setContentDialog("Loading", "Please wait...");

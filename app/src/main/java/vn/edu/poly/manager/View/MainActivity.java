@@ -265,7 +265,6 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
                 });
         alertDialog2.show();
     }
-
     private void intentView(Class c) {
         Intent intent = new Intent(MainActivity.this,c );
         startActivity(intent);

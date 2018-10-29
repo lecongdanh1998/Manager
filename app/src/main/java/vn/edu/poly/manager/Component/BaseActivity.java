@@ -57,7 +57,6 @@ public abstract class BaseActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         view = getWindow().getDecorView().getRootView();
-
         checkInternetPermission(this);
         dataLogin  = getSharedPreferences("data_login", MODE_PRIVATE);
         snackbar = Snackbar.make(view, "Not connect internet", Snackbar.LENGTH_INDEFINITE)

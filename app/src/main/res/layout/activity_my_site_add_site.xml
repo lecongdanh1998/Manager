@@ -6,7 +6,9 @@
     android:layout_height="match_parent"
     tools:context=".View.MySiteAddSiteActivity"
     tools:ignore="MissingDefaultResource">
+
     <ScrollView
+        android:layout_above="@id/btn_create_AddMySite"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -59,71 +61,64 @@
                 android:orientation="vertical"
                 android:weightSum="4">
 
-                <TextView
-                    android:id="@+id/txt_username_signIn"
+                <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:fontFamily="@font/roboto_light"
-                    android:text="@string/Str_extSiteCreateMySite"
-                    android:textColor="@color/colorGray"
-                    android:textSize="@dimen/textMedium" />
+                    app:errorTextAppearance="@style/HintTextError"
+                    app:hintTextAppearance="@style/HintText">
 
-                <EditText
-                    android:id="@+id/edt_Site_AddMySite"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@android:color/transparent"
-                    android:cursorVisible="true"
-                    android:fontFamily="@font/roboto_medium"
-                    android:hint="NKS"
-                    android:inputType="textEmailAddress"
-                    android:paddingTop="@dimen/padding_edt_form_signIn"
-                    android:paddingBottom="@dimen/padding_edt_form_signIn"
-                    android:textColor="@color/colorBlack"
-                    android:textColorHint="@color/colorGray"
-                    android:textCursorDrawable="@color/colorPrimary"
-                    android:textSize="@dimen/textMedium" />
+                    <EditText
+                        android:id="@+id/edt_Site_AddMySite"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@android:color/transparent"
+                        android:cursorVisible="true"
+                        android:fontFamily="@font/roboto_medium"
+                        android:hint="NKS"
+                        android:inputType="textEmailAddress"
+                        android:paddingTop="@dimen/padding_edt_form_signIn"
+                        android:paddingBottom="@dimen/padding_edt_form_signIn"
+                        android:textColor="@color/colorBlack"
+                        android:textColorHint="@color/colorGray"
+                        android:textCursorDrawable="@color/colorPrimary"
+                        android:textSize="@dimen/textMedium" />
+                </android.support.design.widget.TextInputLayout>
 
-                <TextView
-                    android:id="@+id/txt_URL_AddMySite"
+                <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="@dimen/padding_edt_form_signIn"
                     android:layout_weight="1"
-                    android:fontFamily="@font/roboto_thin"
-                    android:text="@string/Str_extURLCreateMySite"
-                    android:textColor="@color/colorGray"
-                    android:textSize="@dimen/textMedium" />
+                    app:errorTextAppearance="@style/HintTextError"
+                    app:hintTextAppearance="@style/HintText">
 
-                <EditText
-                    android:id="@+id/edt_URL_AddMySite"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@android:color/transparent"
-                    android:cursorVisible="true"
-                    android:fontFamily="@font/roboto_medium"
-                    android:hint="nks@gmail.com"
-                    android:inputType="text"
-                    android:paddingTop="@dimen/padding_edt_form_signIn"
-                    android:paddingBottom="@dimen/padding_edt_form_signIn"
-                    android:textColor="@color/colorBlack"
-                    android:textColorHint="@color/colorGray"
-                    android:textCursorDrawable="@color/colorPrimary"
-                    android:textSize="@dimen/textMedium" />
+                    <EditText
+                        android:id="@+id/edt_URL_AddMySite"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@android:color/transparent"
+                        android:cursorVisible="true"
+                        android:fontFamily="@font/roboto_medium"
+                        android:hint="nks@gmail.com"
+                        android:inputType="text"
+                        android:paddingTop="@dimen/padding_edt_form_signIn"
+                        android:paddingBottom="@dimen/padding_edt_form_signIn"
+                        android:textColor="@color/colorBlack"
+                        android:textColorHint="@color/colorGray"
+                        android:textCursorDrawable="@color/colorPrimary"
+                        android:textSize="@dimen/textMedium" />
+                </android.support.design.widget.TextInputLayout>
             </LinearLayout>
-
-
         </RelativeLayout>
-
     </ScrollView>
+
     <Button
-        android:layout_alignParentBottom="true"
         android:id="@+id/btn_create_AddMySite"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimens_heigth_btnAdd"
+        android:layout_alignParentBottom="true"
         android:background="@color/color_btnAdd"
         android:fontFamily="@font/roboto_medium"
         android:text="@string/Str_btnCreateMySite"
