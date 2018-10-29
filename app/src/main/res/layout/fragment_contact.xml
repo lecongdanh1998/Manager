@@ -49,7 +49,6 @@
                 android:textSize="@dimen/textMedium" />
         </RelativeLayout>
     </LinearLayout>
-
     <ListView
         android:id="@+id/listView_contact"
         android:layout_width="match_parent"

@@ -68,14 +68,12 @@
                     android:textSize="@dimen/textMedium" />
             </RelativeLayout>
         </LinearLayout>
-
         <ListView
             android:id="@+id/lstPost"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@id/LNL"
             android:divider="@null">
-
         </ListView>
     </RelativeLayout>
 </FrameLayout>

@@ -61,7 +61,6 @@ public class Contact extends Fragment implements View.OnClickListener, AdapterVi
     private String status;
     private String create_at;
     ArrayList<ContactsModel> list;
-//    ProgressDialogWait progressDialogWait;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -80,8 +79,6 @@ public class Contact extends Fragment implements View.OnClickListener, AdapterVi
         btn_pending_contact.setOnClickListener(this);
         btn_done_contact = view.findViewById(R.id.btn_done_contact);
         btn_done_contact.setOnClickListener(this);
-//        progressDialogWait = new ProgressDialogWait();
-//        progressDialogWait.show(getFragmentManager(), "dialogWait");
     }
 
     private void initData() {

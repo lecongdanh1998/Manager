@@ -42,11 +42,6 @@ import vn.edu.poly.manager.View.SignIn;
 
 public class Post extends Fragment implements View.OnClickListener {
     private View view;
-//    private TabLayout tablayout;
-//    private ViewPager viewpager;
-//    private ArrayList<FragmentModel> fragmentModelArrayList;
-//    private ViewPagerAdapter viewPagerAdapter;
-//    SharedPreferences dataLogin;
     private int index_back_fragment;
     private FragmentManager fm;
     ArrayList<POSTContructor> arrayList;
@@ -119,16 +114,6 @@ public class Post extends Fragment implements View.OnClickListener {
                intentView(PostDetails.class);
             }
         });
-
-//        fragmentModelArrayList = new ArrayList<>();
-//        fragmentModelArrayList.add(new FragmentModel(new Draff(), "Draff"));
-//        fragmentModelArrayList.add(new FragmentModel(new Pending(), "Pending"));
-//        fragmentModelArrayList.add(new FragmentModel(new Public(), "Public"));
-//        viewPagerAdapter = new ViewPagerAdapter(getFragmentManager(), fragmentModelArrayList);
-//        viewpager.setAdapter(viewPagerAdapter);
-//        new CustomFontToolBar(tablayout, getActivity()).setCustomFontTab();
-//        tablayout.setupWithViewPager(viewpager);
-
     }
 
     private void intentView(Class c) {
@@ -144,9 +129,6 @@ public class Post extends Fragment implements View.OnClickListener {
         btnDraff = (Button) view.findViewById(R.id.btnDraff);
         btnPending = (Button) view.findViewById(R.id.btnPending);
         btnPublic = (Button) view.findViewById(R.id.btnPublic);
-//        tablayout = view.findViewById(R.id.tablayout);
-//        viewpager = view.findViewById(R.id.viewpager);
-//        tablayout.setupWithViewPager(viewpager);
     }
 
 
