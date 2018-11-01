@@ -8,16 +8,26 @@ public class POSTContructor implements Serializable {
     String txt_Time;
     String img_people;
     String id;
+    String status;
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
     public POSTContructor() {
     }
 
-    public POSTContructor(String img_title, String txt_title, String txt_Time, String img_people, String id) {
+    public POSTContructor(String img_title, String txt_title, String txt_Time, String img_people, String id,String status) {
         this.img_title = img_title;
         this.txt_title = txt_title;
         this.txt_Time = txt_Time;
         this.img_people = img_people;
         this.id = id;
+        this.status = status;
     }
 
     public String getId() {

@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#1e0411"
+    android:focusableInTouchMode="true"
     tools:context=".View.Setting.Setting">
     <android.support.design.widget.CoordinatorLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -22,13 +24,14 @@
                 android:id="@+id/collapsingToolbar"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:layout_scrollFlags="scroll|exitUntilCollapsed"
+                app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed|snap"
                 android:fitsSystemWindows="true"
                 android:background="@android:color/transparent"
                 app:contentScrim="?attr/colorPrimary"
                 app:expandedTitleMarginStart="48dp"
                 app:expandedTitleMarginEnd="64dp"
                 >
+
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
@@ -72,15 +75,36 @@
             </android.support.design.widget.CollapsingToolbarLayout>
         </android.support.design.widget.AppBarLayout>
         <android.support.v4.widget.NestedScrollView
+            android:fillViewport="true"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@android:color/transparent"
             android:layout_above="@id/btn_UploadGallery"
             android:paddingBottom="@dimen/dimens_heigth_btnAdd"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
+                <ListView android:divider="@null"
+                android:background="@android:color/transparent"
+                android:nestedScrollingEnabled="true"
+                android:id="@+id/gallery1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                    android:layout_below="@id/ext_MoPhong_Gallery"
+                ></ListView>
+                <GridView
+                    android:layout_below="@id/ext_MoPhong_Gallery"
+                    android:numColumns="3"
+                    android:divider="@null"
+                    android:background="@android:color/transparent"
+                    android:nestedScrollingEnabled="true"
+                    android:id="@+id/gallery"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    ></GridView>
                 <EditText
+                    android:layout_marginTop="10dp"
                     android:id="@+id/ext_Search_Gallery"
                     android:lines="1"
                     android:textCursorDrawable="@null"
@@ -100,17 +124,30 @@
                     android:layout_marginRight="@dimen/dimens_margin"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dimens_heightEditText" />
-                <net.alhazmy13.mediagallery.library.views.MediaGalleryView
-                    android:layout_below="@id/ext_Search_Gallery"
-                    xmlns:android="http://schemas.android.com/apk/res/android"
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/gallery"
-                    android:layout_marginTop="@dimen/dimens_margin"
+                <EditText
+                    android:visibility="gone"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/ext_MoPhong_Gallery"
+                    android:layout_gravity="center"
+                    android:background="@android:color/transparent"
+                    android:layout_marginLeft="@dimen/dimens_margin"
+                    android:layout_marginRight="@dimen/dimens_margin"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    app:place_holder="@drawable/media_gallery_placeholder"
-                    app:gallery_orientation="vertical"
-                    app:span_count="1"/>
+                    android:layout_height="@dimen/dimens_heightEditText" />
+                <!--<net.alhazmy13.mediagallery.library.views.MediaGalleryView-->
+                    <!--android:layout_below="@id/ext_Search_Gallery"-->
+                    <!--xmlns:android="http://schemas.android.com/apk/res/android"-->
+                    <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+                    <!--android:id="@+id/gallery1"-->
+                    <!--android:layout_marginTop="@dimen/dimens_margin"-->
+                    <!--android:layout_centerHorizontal="true"-->
+                    <!--app:image_height="300dp"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--app:place_holder="@drawable/media_gallery_placeholder"-->
+                    <!--app:gallery_orientation="vertical"-->
+                    <!--app:span_count="1"/>-->
             </RelativeLayout>
         </android.support.v4.widget.NestedScrollView>
         <Button
@@ -123,6 +160,13 @@
             android:layout_width="match_parent"
             android:background="@color/color_btnAdd"
             android:layout_height="@dimen/dimens_heigth_btnAdd" />
+
+        <ImageView
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/img_upload_gallery"
+            />
     </android.support.design.widget.CoordinatorLayout>
 
 

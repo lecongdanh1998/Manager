@@ -188,4 +188,5 @@ public class Contact extends Fragment implements View.OnClickListener, AdapterVi
         intent.putExtra("id", contactsModelArrayList.get(position).getId());
         startActivity(intent);
     }
+
 }

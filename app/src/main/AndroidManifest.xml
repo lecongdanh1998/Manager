@@ -4,8 +4,11 @@
     package="vn.edu.poly.manager">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -17,13 +20,16 @@
         <activity android:name=".View.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".View.MySiteActivity"
-            android:windowSoftInputMode="adjustResize"></activity>
-        <activity android:name=".View.MainActivity" />
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".View.MainActivity"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".View.SignIn"
             android:windowSoftInputMode="adjustResize" />
@@ -31,7 +37,9 @@
             android:name=".View.MySiteAddSiteActivity"
             android:windowSoftInputMode="adjustResize" />
         <activity android:name=".View.Post.PostDetail.PostDetails" />
-        <activity android:name=".View.Post.PostDetail.PostDetailsUpdate" />
+        <activity
+            android:name=".View.Post.PostDetail.PostDetailsUpdate"
+            android:windowSoftInputMode="adjustResize" />
         <activity android:name=".View.Setting.SettingDetails.SetttingDetails" />
 
         <receiver
@@ -42,10 +50,14 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name=".View.Contact.ContactDetails.ContactDetails"></activity>
-        <activity android:name=".View.Help.HelpDetais.NKSHeader"></activity>
-        <activity android:name=".View.Help.HelpDetais.SendHelp"></activity>
-        <activity android:name=".View.Help.HelpDetais.RequestHelp"></activity>
+        <activity android:name=".View.Contact.ContactDetails.ContactDetails" />
+        <activity android:name=".View.Help.HelpDetais.NKSHeader" />
+        <activity android:name=".View.Help.HelpDetais.SendHelp" />
+        <activity android:name=".View.Help.HelpDetais.RequestHelp" />
+        <activity
+            android:name=".View.Account.Account"
+            android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".View.Gallery.GalleryImageShow"></activity>
     </application>
 
 </manifest>

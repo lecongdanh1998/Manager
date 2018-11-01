@@ -84,9 +84,14 @@ public class MySiteAddSiteActivity extends BaseActivity implements View.OnClickL
         }
 
         if (errorCode == 0){
-            intentView(MySiteActivity.class);
+            intentView(SignIn.class);
         }
 //        intentView(MainActivity.class);
     }
 
+    @Override
+    public void onBackPressed() {
+        intentView(SignIn.class);
+        super.onBackPressed();
+    }
 }

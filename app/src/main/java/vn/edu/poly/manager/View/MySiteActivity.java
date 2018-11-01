@@ -20,7 +20,6 @@ public class MySiteActivity extends BaseActivity implements View.OnClickListener
     MySiteAdapter adapter;
     ListView lst_Mysite;
     Button btn_addSite;
-
     String Site = "";
     String Url = "";
     @Override
@@ -38,7 +37,7 @@ public class MySiteActivity extends BaseActivity implements View.OnClickListener
 
     private void initData() {
         Site = dataLogin.getString("SITE","");
-        Url = dataLogin.getString("URL","");
+        Url = http+dataLogin.getString("URL","");
         arrayList = new ArrayList<>();
         if(Site != ""&& Url != ""){
             arrayList.add(new MySiteContructor(Site,Url));
@@ -84,7 +83,7 @@ public class MySiteActivity extends BaseActivity implements View.OnClickListener
 
     @Override
     public void onBackPressed() {
-        finish();
+        intentView(SignIn.class);
         super.onBackPressed();
     }
 }

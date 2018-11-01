@@ -53,7 +53,7 @@
                         android:layout_height="@dimen/avatar_size"
                         android:layout_centerHorizontal="true"
                         android:layout_margin="@dimen/margin_header_navigation_main"
-                        android:src="@drawable/logo_nks" />
+                        android:src="@drawable/ic_supervisor_account_black_120dp" />
 
                     <TextView
                         android:id="@+id/txt_name_header_navigation_main"

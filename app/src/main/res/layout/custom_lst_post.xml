@@ -25,7 +25,6 @@
         android:lines="1"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        android:text="Giao dien he thong"
         android:textColor="@color/colorBlack"
         android:textSize="@dimen/textMedium" />
 
@@ -39,10 +38,9 @@
         android:layout_toLeftOf="@id/img_logo"
         android:ellipsize="end"
         android:fontFamily="@font/roboto_regular"
-        android:lines="1"
+        android:lines="2"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        android:text="20:40"
         android:textColor="@color/colorBlack"
         android:textSize="@dimen/textSmall" />
 
@@ -55,7 +53,6 @@
         android:layout_centerInParent="true"
         android:layout_marginTop="5dp"
         android:layout_marginRight="10dp"
-        android:src="@drawable/logo_nks"
         app:civ_border_color="#ffffff"
         app:civ_border_width="2dp" />
 </RelativeLayout>

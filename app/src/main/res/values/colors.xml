@@ -13,6 +13,9 @@
     <color name="color_txtTitleSiteGray">#bcbab8</color>
     <color name="color_txtTitleLst">#182952</color>
     <color name="color_btnAdd">#0077bb</color>
+    <color name="color_txtEdit">#0077bb</color>
+    <color name="color_txtMoPhong">#0077bb</color>
     <color name="colorRed">#ff00</color>
     <color name="color_black">#000000</color>
+    <color name="color_trans">#00FFFFFF</color>
 </resources>

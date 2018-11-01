@@ -63,13 +63,13 @@ public class POSTAdapter extends BaseAdapter {
         Picasso.get()
                 .load(contructor.getImg_title())
                 .resize(350,200)
-                .placeholder(R.drawable.ic_launcher_background)
-                .error(R.drawable.ic_launcher_background)
+                .placeholder(R.drawable.gallery100)
+                .error(R.drawable.gallery100)
                 .into(viewHolder.imgTitle);
         Picasso.get()
                 .load(contructor.getImg_people())
-                .placeholder(R.drawable.ic_launcher_background)
-                .error(R.drawable.ic_launcher_background)
+                .placeholder(R.drawable.person40)
+                .error(R.drawable.person40)
                 .into(viewHolder.imgPeople);
         return convertView;
     }

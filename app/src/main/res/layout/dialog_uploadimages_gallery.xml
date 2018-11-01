@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    android:weightSum="3"
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_margin="@dimen/dimens_margin"
+        android:id="@+id/txt_camera_Upload"
+        android:textColor="@color/color_black"
+        android:textSize="@dimen/dimens_textsize14sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/camera_txtUploadImages"
+        />
+    <TextView
+        android:id="@+id/txt_gallery_Upload"
+        android:layout_marginLeft="16dp"
+        android:layout_marginBottom="16dp"
+        android:textColor="@color/color_black"
+        android:textSize="@dimen/dimens_textsize14sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/gallery_txtUploadImages"
+        />
+
+</LinearLayout>

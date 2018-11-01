@@ -6,11 +6,14 @@
     <string name="Str_btnAddMySite">New Site</string>
     <string name="Str_UploadGallery">Upload</string>
     <string name="Str_btnbrowse">Duyệt bài</string>
+    <string name="Str_btnSaveAccount">Cập nhật tài khoản</string>
     <string name="Str_btnSave">Lưu bài viết</string>
+    <string name="Str_passwordrandom">Tạo mật khẩu ngẫu nhiên</string>
     <string name="your_site_signIn">Your site</string>
     <string name="select_site_signIn">Select to continue</string>
     <string name="username">Username</string>
     <string name="placeholder_username">Enter your username</string>
+    <string name="placeholder_email">Enter your name</string>
     <string name="password">Password</string>
     <string name="placeholder_password">Enter your password</string>
     <string name="continue_signIn">Continue</string>
@@ -36,8 +39,12 @@
     <string name="btn_cancel">Cancel</string>
     <string name="nks_email">infor@nks.com.vn</string>
     <string name="nks_phone">0931 877 866</string>
+    <string name="edit_account">Edit</string>
     <string name="infor_company">NKS Head Office</string>
     <string name="infor_tiket">Ticket</string>
     <string name="copyright">Copyright @ 2018 - Power by NKS</string>
     <string name="nks_website">ww.nks.com.vs</string>
+    <string name="cachthuchien_txtUploadImages">Cách thực hiện</string>
+    <string name="camera_txtUploadImages">1. Chụp ảnh</string>
+    <string name="gallery_txtUploadImages">2. Lấy ảnh từ thư viện</string>
 </resources>

@@ -1,6 +1,7 @@
 package vn.edu.poly.manager.View;
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -32,17 +33,23 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.squareup.picasso.Picasso;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import vn.edu.poly.manager.Adapter.MenuAdapter;
 import vn.edu.poly.manager.Component.BaseActivity;
 import vn.edu.poly.manager.Model.MenuModel;
 import vn.edu.poly.manager.R;
+import vn.edu.poly.manager.Server.ApiConnect;
+import vn.edu.poly.manager.View.Account.Account;
 import vn.edu.poly.manager.View.Contact.Contact;
 import vn.edu.poly.manager.View.Dashboard.Dashboard;
 import vn.edu.poly.manager.View.Gallery.Gallery;
@@ -60,13 +67,20 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
     private MenuAdapter menuAdapter;
     private ArrayList<MenuModel> menuModelArrayList;
     private TextView toolbar_title;
-    private SharedPreferences dataLogin;
-    private SharedPreferences.Editor editor;
     private ImageView img_back_MysiteToobar;
     private ImageView btn_cancel;
     private RelativeLayout btn_setting,btn_logout_main;
     private ImageView img_find_MysiteToobar;
     String screen;
+    String email = "";
+    String password = "";
+    CircleImageView avatarImages;
+    TextView txtEmail,txtName;
+    private ProgressDialog progressDialog;
+    String URL_GET_USER_INFOR = "";
+    String Url = "";
+    RelativeLayout layout_header_navigation_main;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,6 +95,8 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
                 transactionFrangment(new Post(), "Post");
             } else if (screen.equalsIgnoreCase("help")){
                 transactionFrangment(new Help(), "Help");
+            }else if(screen.equalsIgnoreCase("gallery")){
+                transactionFrangment(new Gallery(), "My Gallery");
             }
             else {
                 transactionFrangment(new Dashboard(), "Dashboard");
@@ -96,6 +112,11 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
      * create and register layout
      * */
     private void initView() {
+        progressDialog = new ProgressDialog(this);
+        layout_header_navigation_main = findViewById(R.id.layout_header_navigation_main);
+        avatarImages = findViewById(R.id.avatar_user_header_navigation_main);
+        txtName = findViewById(R.id.txt_name_header_navigation_main);
+        txtEmail = findViewById(R.id.txt_role_header_navigation_main);
         drawer_layout = findViewById(R.id.drawer_layout);
         nav_view = findViewById(R.id.nav_view);
         toolbar_title = findViewById(R.id.txt_name_MySiteToobar);
@@ -118,14 +139,19 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
         btn_setting.setOnClickListener(this);
         img_find_MysiteToobar.setOnClickListener(this);
         btn_logout_main.setOnClickListener(this);
+        layout_header_navigation_main.setOnClickListener(this);
     }
 
     /*
      * init data for layout
      * */
     private void initData() {
-        dataLogin = getSharedPreferences("dataLogin", MODE_PRIVATE);
         editor = dataLogin.edit();
+        email = dataLogin.getString("useremail","");
+        password = dataLogin.getString("userpassword","");
+        Url = dataLogin.getString("URLSignIn","");
+        Log.d("URL123",""+Url);
+        URL_GET_USER_INFOR = ApiConnect.URL_GET_USER_INFOR(Url);
         /*
          * create menu arraylist
          * */
@@ -141,6 +167,77 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
          * */
         menuAdapter = new MenuAdapter(this, menuModelArrayList, "3");
         listview_menu.setAdapter(menuAdapter);
+
+        getJsonINFOR(URL_GET_USER_INFOR);
+
+
+    }
+    private void setContentDialog(String title, String messager) {
+        progressDialog.setTitle(title);
+        progressDialog.setMessage(messager);
+    }
+
+    private void getJsonINFOR(String url_get_user_infor) {
+        setContentDialog("Loading", "Please wait...");
+        progressDialog.show();
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url_get_user_infor,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        progressDialog.dismiss();
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            JSONObject jsonObject1 = jsonObject.getJSONObject("data");
+                            idUser = jsonObject1.getString("id");
+                            role_idUser = jsonObject1.getString("role_id");
+                            nameUser = jsonObject1.getString("name");
+                            emailUser = jsonObject1.getString("email");
+                            avatarUser = jsonObject1.getString("avatar");
+                            email_verified_atUser = jsonObject1.getString("email_verified_at");
+                            passwordUser = jsonObject1.getString("password");
+                            remember_tokenUser = jsonObject1.getString("remember_token");
+                            settingsUser = jsonObject1.getString("settings");
+                            created_atUser = jsonObject1.getString("created_at");
+                            updated_atUser = jsonObject1.getString("updated_at");
+                            role_nameUser = jsonObject1.getString("role_name");
+                            txtName.setText(nameUser);
+                            txtEmail.setText(emailUser);
+                            Picasso.get()
+                                    .load(avatarUser)
+                                    .placeholder(R.drawable.ic_supervisor_account_black_120dp)
+                                    .error(R.drawable.ic_supervisor_account_black_120dp)
+                                    .into(avatarImages);
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                progressDialog.dismiss();
+                Toast.makeText(MainActivity.this, ""+error.toString(), Toast.LENGTH_SHORT).show();
+            }
+        }){
+                @Override
+                protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> stringMap = new HashMap<>();
+                stringMap.put("email", email);
+                return stringMap;
+            }
+
+                @Override
+                public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> stringMap = new HashMap<>();
+                token = dataLogin.getString("usertoken", "");
+                stringMap.put("Authorization", token);
+                return stringMap;
+            }
+        };
+        requestQueue.add(stringRequest);
     }
 
     @Override
@@ -209,7 +306,35 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
+        AlertDialogExit();
+    }
+
+    private void AlertDialogExit() {
+        AlertDialog.Builder alertDialog2 = new AlertDialog.Builder(
+                MainActivity.this);
+        alertDialog2.setTitle("Thoát...");
+        alertDialog2.setMessage("Bạn có chắc chắn thoát không?");
+        alertDialog2.setIcon(R.drawable.exit);
+        alertDialog2.setPositiveButton("Có",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                    }
+
+                });
+
+// Setting Negative "NO" Btn
+        alertDialog2.setNegativeButton("Không",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Write your code here to execute after dialog
+
+                        dialog.cancel();
+                    }
+                });
+
+// Showing Alert Dialog
+        alertDialog2.show();
     }
 
     @Override
@@ -227,6 +352,11 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
                 break;
             case R.id.btn_logout_main:
                 alertLogout();
+                break;
+            case R.id.layout_header_navigation_main:
+                editor.putString("userpassword",password);
+                editor.commit();
+                intentView(Account.class);
                 break;
         }
     }
@@ -250,10 +380,10 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
         alertDialog2.setPositiveButton("Có",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        BaseActivity.editor = BaseActivity.dataLogin.edit();
-                        BaseActivity.editor.putString("useremail", "");
-                        BaseActivity.editor.putString("userpassword", "");
-                        BaseActivity.editor.commit();
+                        editor = dataLogin.edit();
+                        editor.putString("useremail", "");
+                        editor.putString("userpassword", "");
+                        editor.commit();
                         intentView(SignIn.class);
                     }
                 });

@@ -34,4 +34,19 @@
         android:layout_centerVertical="true"
         android:layout_marginRight="@dimen/dimens_margin"
         android:src="@drawable/ic_search_black_24dp" />
+    <TextView
+        android:visibility="invisible"
+        android:layout_marginRight="@dimen/dimens_margin"
+        android:layout_centerVertical="true"
+        android:id="@+id/txt_edit_MySiteToobar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:fontFamily="@font/roboto_medium"
+        android:gravity="center"
+        android:text="@string/edit_account"
+        android:textColor="@color/color_txtEdit"
+        android:textSize="@dimen/textMedium"
+        android:textStyle="bold" />
+
 </RelativeLayout>

@@ -18,6 +18,7 @@ import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
@@ -95,6 +96,10 @@ public class SignIn extends BaseActivity implements View.OnClickListener {
         txt_your_site_signIn.setText(Site);
         txt_select_signIn.setText(Url);
 
+
+
+
+
     }
 
     private void initEventButton() {
@@ -110,7 +115,7 @@ public class SignIn extends BaseActivity implements View.OnClickListener {
                 SingIn(URL_SIGNIN);
                 break;
             case R.id.layout_your_site:
-                intentView(MySiteActivity.class);
+                intentView(MySiteAddSiteActivity.class);
                 //add website url
                 break;
             case R.id.btn_connect_internet:

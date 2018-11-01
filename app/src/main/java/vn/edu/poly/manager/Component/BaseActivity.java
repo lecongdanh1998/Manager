@@ -26,8 +26,9 @@ import vn.edu.poly.manager.Networking.NetworkStateMonitor;
 import vn.edu.poly.manager.R;
 
 public abstract class BaseActivity extends AppCompatActivity{
-
+    public static String http = "http://";
     public static String token = "";
+    public static String author = "";
     public static String id = "";
     public static String author_id = "";
     public static String category_id = "";
@@ -45,12 +46,25 @@ public abstract class BaseActivity extends AppCompatActivity{
     public static String updated_at = "";
     public static String name = "";
     public static String avatar = "";
+    public static String category = "";
     public static int NumberFind;
     public static SharedPreferences dataLogin;
     public static SharedPreferences.Editor editor;
     private final int MY_PERMISSIONS_REQUEST_INTERNET = 10;
     BroadcastReceiver broadcastReceiver;
     public Snackbar snackbar;
+    public static String idUser = "";
+    public static String role_idUser = "";
+    public static String nameUser = "";
+    public static String emailUser = "";
+    public static String avatarUser = "";
+    public static String email_verified_atUser = "";
+    public static String passwordUser = "";
+    public static String remember_tokenUser = "";
+    public static String settingsUser = "";
+    public static String created_atUser = "";
+    public static String updated_atUser = "";
+    public static String role_nameUser = "";
     View view;
 
     @Override
